@@ -76,7 +76,7 @@
       <p class="hero-sub" data-i18n="hero.sub">计算机视觉 · 智能技能循环 · ~50ms 决策</p>
       <p class="hero-desc" data-i18n="hero.desc">Permes 不读取游戏内存、不注入进程，通过计算机视觉技术识别屏幕状态，规则引擎判定技能优先级发送按键。整条链路最低 50ms，CPU 占用不足 10%，DPS 对齐 SimC 理论值 ±2%。</p>
       <div class="hero-cta">
-        <a href="https://cdn.permes.xin/HubV4.0.exe" class="btn btn-primary" data-i18n="hero.cta.primary">获取 Permes</a>
+        <a href="#" class="btn btn-primary" data-i18n="hero.cta.primary" onclick="return false">获取 Permes</a>
         <a href="#how" class="btn btn-ghost" data-i18n="hero.cta.secondary">查看工作原理</a>
       </div>
       <p class="hero-note" data-i18n="hero.note">仅支持 Windows · 中英双语 · 不读内存 · 账号零风险</p>
@@ -703,7 +703,7 @@
     <div class="cta-box reveal">
       <h2 class="cta-title">Permes <span class="accent">Hub</span></h2>
       <p class="cta-sub" data-i18n="hero.note">仅支持 Windows · 中英双语 · 不读内存 · 账号零风险</p>
-      <a href="https://cdn.permes.xin/HubV4.0.exe" class="btn btn-primary btn-lg" data-i18n="nav.cta">获取 Permes</a>
+      <a href="#" class="btn btn-primary btn-lg" data-i18n="nav.cta" onclick="return false">获取 Permes</a>
     </div>
   </div>
 </section>
@@ -752,6 +752,9 @@
     <path d="M12 19V5M5 12l7-7 7 7"/>
   </svg>
 </button>
+
+<!-- 下载限流提示 toast -->
+<div id="downloadToast" class="download-toast"></div>
 
 <script src="js/i18n.js"></script>
 <script src="js/modules-data.js"></script>

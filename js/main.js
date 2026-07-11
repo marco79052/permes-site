@@ -282,6 +282,70 @@
   const simcChart = document.querySelector('.simc-chart');
   if (simcChart) chartObserver.observe(simcChart);
 
+  // ============ 下载限流 ============
+  var DOWNLOAD_URL = 'https://cdn.permes.xin/HubV4.0.exe';
+  var DOWNLOAD_LIMIT = 5;
+  var DOWNLOAD_KEY = 'permes_download_log';
+
+  function getTodayKey() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function getDownloadCount() {
+    try {
+      var log = JSON.parse(localStorage.getItem(DOWNLOAD_KEY) || '{}');
+      var today = getTodayKey();
+      // 清理过期记录（只保留今天）
+      var cleaned = {};
+      if (log[today]) cleaned[today] = log[today];
+      if (Object.keys(cleaned).length !== Object.keys(log).length) {
+        localStorage.setItem(DOWNLOAD_KEY, JSON.stringify(cleaned));
+      }
+      return cleaned[today] || 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function incrementDownloadCount() {
+    try {
+      var log = JSON.parse(localStorage.getItem(DOWNLOAD_KEY) || '{}');
+      var today = getTodayKey();
+      log = {};
+      log[today] = (log[today] || 0) + 1;
+      localStorage.setItem(DOWNLOAD_KEY, JSON.stringify(log));
+    } catch (e) {}
+  }
+
+  function showDownloadToast() {
+    var toast = document.getElementById('downloadToast');
+    if (!toast) return;
+    var lang = getLang();
+    var dict = window.I18N[lang];
+    toast.textContent = dict['download.limit'] || 'Daily download limit reached.';
+    toast.classList.add('show');
+    setTimeout(function () {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+
+  function handleDownloadClick(e) {
+    e.preventDefault();
+    var count = getDownloadCount();
+    if (count >= DOWNLOAD_LIMIT) {
+      showDownloadToast();
+      return;
+    }
+    incrementDownloadCount();
+    window.location.href = DOWNLOAD_URL;
+  }
+
+  // 绑定所有下载按钮（data-i18n="nav.cta" 且在 .hero-cta 或 .cta-box 内的 .btn-primary）
+  document.querySelectorAll('.hero-cta .btn-primary, .cta-box .btn-primary').forEach(function (btn) {
+    btn.addEventListener('click', handleDownloadClick);
+  });
+
   // ============ 初始化 ============
   applyLang(getLang());
   handleScroll();

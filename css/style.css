@@ -1489,3 +1489,29 @@ img { max-width: 100%; display: block; }
     transform: rotate(90deg);
   }
 }
+
+/* ============ 下载限流 Toast ============ */
+.download-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-hi);
+  color: var(--text);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.download-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

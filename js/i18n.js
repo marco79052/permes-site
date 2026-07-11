@@ -210,7 +210,9 @@ window.I18N = {
     "footer.platform": "平台",
     "footer.platform.v": "Windows",
     "footer.disclaimer": "本项目仅供学习与研究使用，请遵守游戏服务条款与相关法律法规。",
-    "footer.copy": "© 2026 Permes. 用中文开发，英文自动适配。"
+    "footer.copy": "© 2026 Permes. 用中文开发，英文自动适配。",
+
+    "download.limit": "今日下载次数已达上限（5次），请明天再试"
   },
 
   en: {
@@ -417,6 +419,8 @@ window.I18N = {
     "footer.platform": "Platform",
     "footer.platform.v": "Windows",
     "footer.disclaimer": "For learning and research only. Please comply with the game's Terms of Service and applicable laws.",
-    "footer.copy": "© 2026 Permes. Developed in Chinese, auto-adapted to English."
+    "footer.copy": "© 2026 Permes. Developed in Chinese, auto-adapted to English.",
+
+    "download.limit": "Daily download limit reached (5). Please try again tomorrow."
   }
 };
