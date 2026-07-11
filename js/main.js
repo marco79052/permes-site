@@ -41,8 +41,26 @@
       toggleText.textContent = lang === 'zh' ? 'English' : '简体中文';
     }
 
+    // 更新 title 和 meta description
+    if (lang === 'en') {
+      document.title = 'Permes · AI-Powered WoW Combat Assistant';
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Permes - AI-powered WoW combat assistant. No memory reading, no process injection. Computer vision technology, DPS aligned to SimC ±2%, CPU usage under 10%, zero account risk.');
+      }
+    } else {
+      document.title = 'Permes · AI 驱动的魔兽世界战斗辅助';
+      var metaDescZh = document.querySelector('meta[name="description"]');
+      if (metaDescZh) {
+        metaDescZh.setAttribute('content', 'Permes - AI 驱动的魔兽世界战斗辅助。不读内存、不注入进程，计算机视觉技术，DPS 对齐 SimC ±2%，CPU 占用不足 10%，账号零风险。');
+      }
+    }
+
     // 重新渲染模块网格（因为模块名需要切换语言）
     renderModules();
+
+    // 移除防闪烁 class，恢复文本显示
+    document.documentElement.classList.remove('lang-loading');
   }
 
   // ============ 导航栏 ============

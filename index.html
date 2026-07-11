@@ -10,6 +10,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // 在页面渲染前检测语言，避免英文用户看到中文闪烁
+    (function () {
+      try {
+        var stored = localStorage.getItem('permes_lang');
+        var lang = (stored === 'zh' || stored === 'en')
+          ? stored
+          : (navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en');
+        document.documentElement.lang = lang;
+        if (lang === 'en') {
+          // 添加 class，CSS 在 i18n.js 执行前先隐藏带中文的 data-i18n 节点
+          document.documentElement.classList.add('lang-loading');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 

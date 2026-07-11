@@ -4,6 +4,16 @@
  * 纯静态，零依赖，双击即用
  * ========================================================= */
 
+/* ============ 防中文闪烁 ============ */
+/* 英文用户首次加载时，i18n.js 执行前先隐藏中文文本，避免闪烁 */
+html.lang-loading [data-i18n] {
+  visibility: hidden;
+}
+html.lang-loading .hero-visual,
+html.lang-loading .demo-window {
+  visibility: visible; /* demo 动画区域不隐藏 */
+}
+
 /* ============ CSS 变量 ============ */
 :root {
   --bg:          #141414;
