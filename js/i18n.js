@@ -201,6 +201,7 @@ window.I18N = {
     // ---- Footer ----
     "footer.tagline": "AI 驱动的 WoW 战斗辅助",
     "footer.version": "当前版本",
+    "footer.version.v": "自动更新",
     "footer.platform": "平台",
     "footer.platform.v": "Windows",
     "footer.disclaimer": "本项目仅供学习与研究使用，请遵守游戏服务条款与相关法律法规。",
@@ -402,6 +403,7 @@ window.I18N = {
     // ---- Footer ----
     "footer.tagline": "AI-powered WoW combat assistant",
     "footer.version": "Version",
+    "footer.version.v": "Auto-update",
     "footer.platform": "Platform",
     "footer.platform.v": "Windows",
     "footer.disclaimer": "For learning and research only. Please comply with the game's Terms of Service and applicable laws.",
