@@ -29,6 +29,11 @@ window.I18N = {
     "hero.cta.secondary": "查看工作原理",
     "hero.note": "仅支持 Windows · 中英双语 · 不读内存 · 账号零风险",
 
+    "demo.bar.master": "总开关",
+    "demo.bar.burst": "爆发",
+    "demo.bar.mode": "模式",
+    "demo.bar.range": "距离",
+
     "stat.loop": "决策循环",
     "stat.cpu": "CPU 占用",
     "stat.accuracy": "SimC 对齐",
@@ -230,6 +235,11 @@ window.I18N = {
     "hero.cta.primary": "Get Permes",
     "hero.cta.secondary": "See how it works",
     "hero.note": "Windows only · Bilingual (ZH/EN) · No memory read · Zero account risk",
+
+    "demo.bar.master": "Master",
+    "demo.bar.burst": "Burst",
+    "demo.bar.mode": "Mode",
+    "demo.bar.range": "Range",
 
     "stat.loop": "Decision loop",
     "stat.cpu": "CPU usage",
