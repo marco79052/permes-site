@@ -1,0 +1,11 @@
+# Netlify 部署配置
+# 纯静态站点，无需构建步骤
+[build]
+  publish = "."
+  command = ""
+
+# 默认重定向：所有路径回退到 index.html（单页站用不到，但留作扩展）
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200

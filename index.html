@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permes · AI-Powered WoW Combat Assistant</title>
+  <meta name="description" content="Permes - AI 驱动的魔兽世界战斗辅助。不读内存、不注入进程，计算机视觉技术，DPS 对齐 SimC ±2%，CPU 占用不足 10%，账号零风险。">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ 导航 ============ -->
+<nav id="navbar" class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/img/logo.png" alt="Permes" class="nav-logo-img">
+      <span class="nav-logo-text">Permes</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#how" class="nav-link" data-i18n="nav.how">工作原理</a>
+      <a href="#safety" class="nav-link" data-i18n="nav.safety">账号安全</a>
+      <a href="#features" class="nav-link" data-i18n="nav.features">核心特性</a>
+      <a href="#arch" class="nav-link" data-i18n="nav.arch">技术架构</a>
+      <a href="#ocr" class="nav-link" data-i18n="nav.ocr">计算机视觉</a>
+      <a href="#modules" class="nav-link" data-i18n="nav.modules">职业模块</a>
+      <a href="#simc" class="nav-link" data-i18n="nav.simc">SimC 评估</a>
+      <a href="#faq" class="nav-link" data-i18n="nav.faq">常见问题</a>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span data-i18n="lang.switch">English</span>
+      </button>
+      <a href="#download" class="btn btn-primary btn-sm" data-i18n="nav.cta">获取 Permes</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero.badge">⚔️ 持续支持 WoW 12.0（至暗之夜）</div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.title1">AI 驱动的</span>
+        <span class="accent" data-i18n="hero.title2">WoW 战斗辅助</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub">计算机视觉 · 智能技能循环 · ~50ms 决策</p>
+      <p class="hero-desc" data-i18n="hero.desc">Permes 不读取游戏内存、不注入进程，通过计算机视觉技术识别屏幕状态，规则引擎判定技能优先级发送按键。整条链路最低 50ms，CPU 占用不足 10%，DPS 对齐 SimC 理论值 ±2%。</p>
+      <div class="hero-cta">
+        <a href="#download" class="btn btn-primary" data-i18n="hero.cta.primary">获取 Permes</a>
+        <a href="#how" class="btn btn-ghost" data-i18n="hero.cta.secondary">查看工作原理</a>
+      </div>
+      <p class="hero-note" data-i18n="hero.note">仅支持 Windows · 中英双语 · 不读内存 · 账号零风险</p>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-demo">
+        <div class="demo-window">
+          <div class="demo-titlebar">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="demo-title">Permes</span>
+          </div>
+          <div class="demo-body">
+            <div class="demo-pixel-section">
+              <div class="demo-section-label">Pixel</div>
+              <div class="demo-bars">
+                <div class="demo-bar"><span class="bar-led on"></span><span class="bar-label">总开关</span></div>
+                <div class="demo-bar"><span class="bar-led on"></span><span class="bar-label">爆发</span></div>
+                <div class="demo-bar"><span class="bar-led"></span><span class="bar-label">模式</span></div>
+                <div class="demo-bar"><span class="bar-led on"></span><span class="bar-label">距离</span></div>
+              </div>
+            </div>
+            <div class="demo-ocr-section">
+              <div class="demo-section-label ocr">OCR</div>
+              <div class="demo-ocr-grid">
+                <div class="demo-ocr-item"><span class="ocr-val" id="ocr1">12</span><span class="ocr-lbl">cd_1</span></div>
+                <div class="demo-ocr-item"><span class="ocr-val" id="ocr2">3</span><span class="ocr-lbl">stack</span></div>
+                <div class="demo-ocr-item"><span class="ocr-val" id="ocr3">85</span><span class="ocr-lbl">rage</span></div>
+                <div class="demo-ocr-item"><span class="ocr-val" id="ocr4">0</span><span class="ocr-lbl">cd_2</span></div>
+              </div>
+            </div>
+            <div class="demo-action">
+              <div class="demo-action-label">-> Key</div>
+              <div class="demo-key" id="demoKey">F5</div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-loop-badge" data-i18n="how.loop">循环周期最低 50 ms</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat-item reveal">
+        <div class="stat-num">~50<span class="stat-unit">ms</span></div>
+        <div class="stat-label" data-i18n="stat.loop">决策循环</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-num">&lt;10<span class="stat-unit">%</span></div>
+        <div class="stat-label" data-i18n="stat.cpu">CPU 占用</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-num">±2<span class="stat-unit">%</span></div>
+        <div class="stat-label" data-i18n="stat.accuracy">SimC 对齐</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-num" data-count="40">0</div>
+        <div class="stat-label" data-i18n="stat.modules">专精覆盖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 工作原理（简约：无 desc） ============ -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="how.eyebrow">HOW IT WORKS</div>
+      <h2 class="section-title" data-i18n="how.title">像素进，按键出</h2>
+      <p class="section-lead" data-i18n="how.lead">不读取游戏内存，不修改客户端。只看屏幕--像人一样观察，像机器一样反应。</p>
+    </div>
+    <div class="how-flow">
+      <div class="how-step reveal">
+        <div class="how-step-num">01</div>
+        <div class="how-step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 3v18"/>
+            <rect x="6" y="12" width="6" height="3" rx="0.5" fill="currentColor" opacity="0.3"/>
+            <rect x="14" y="12" width="4" height="3" rx="0.5" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how.s1.title">状态渲染</h3>
+      </div>
+      <div class="how-arrow">-></div>
+      <div class="how-step reveal">
+        <div class="how-step-num">02</div>
+        <div class="how-step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/>
+            <rect x="8" y="8" width="8" height="8" rx="1" fill="currentColor" opacity="0.2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how.s2.title">计算机视觉</h3>
+      </div>
+      <div class="how-arrow">-></div>
+      <div class="how-step reveal">
+        <div class="how-step-num">03</div>
+        <div class="how-step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>
+            <path d="M10 7h4M7 10v4M17 10v4M10 17h4" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how.s3.title">规则引擎</h3>
+      </div>
+      <div class="how-arrow">-></div>
+      <div class="how-step reveal">
+        <div class="how-step-num">04</div>
+        <div class="how-step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how.s4.title">按键发送</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 账号安全 ============ -->
+<section class="section section-alt" id="safety">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="safety.eyebrow">ACCOUNT SAFETY</div>
+      <h2 class="section-title" data-i18n="safety.title">账号安全是我们的底线</h2>
+      <p class="section-lead" data-i18n="safety.lead">从架构设计到运行时保护，Permes 在每一个环节都把账号安全放在第一位。</p>
+    </div>
+    <div class="safety-grid">
+      <div class="safety-card reveal">
+        <div class="safety-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/>
+            <path d="M9 12l2 2 4-4" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="safety.f1.title">不读内存</h3>
+        <p data-i18n="safety.f1.desc">不读取游戏内存、不注入进程、不修改客户端文件。仅通过截图观察屏幕像素。</p>
+      </div>
+      <div class="safety-card reveal">
+        <div class="safety-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M21 2l-2 2m-7.5 7.5a5 5 0 0 0-7 7L3 21l3.5-1.5a5 5 0 0 0 7-7z"/>
+            <path d="M14 7l3 3M19 2l3 3-7 7-3-3z" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="safety.f2.title">全随机特征码</h3>
+        <p data-i18n="safety.f2.desc">每次运行生成全新随机特征码，进程指纹不可追溯，无法被特征扫描识别。</p>
+      </div>
+      <div class="safety-card reveal">
+        <div class="safety-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="4" width="8" height="16" rx="1"/>
+            <rect x="13" y="4" width="8" height="16" rx="1"/>
+            <path d="M11 12h2" stroke-dasharray="1 2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="safety.f3.title">代理启动</h3>
+        <p data-i18n="safety.f3.desc">通过独立代理进程启动，主程序与游戏进程完全隔离，行为链路不可关联。</p>
+      </div>
+      <div class="safety-card reveal">
+        <div class="safety-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+            <path d="M3 3l18 18" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="safety.f4.title">全局隐藏</h3>
+        <p data-i18n="safety.f4.desc">运行时全局隐藏窗口与进程信息，任务管理器不可见，反作弊系统不可探测。</p>
+      </div>
+      <div class="safety-card reveal">
+        <div class="safety-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="4" y="4" width="16" height="16" rx="2"/>
+            <path d="M9 9h6v6H9z" fill="currentColor" opacity="0.2"/>
+            <path d="M2 10v4M22 10v4M10 2h4M10 22h4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="safety.f5.title">支持 DMA</h3>
+        <p data-i18n="safety.f5.desc">支持 DMA 硬件模式，按键发送与截图采集完全独立于操作系统，物理级隔离。</p>
+      </div>
+      <div class="safety-card reveal">
+        <div class="safety-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>
+            <path d="M12 2v4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="safety.f6.title">按键保护</h3>
+        <p data-i18n="safety.f6.desc">按键发送经过内核级保护，模拟真实硬件输入特征，注入痕迹从根源消除。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 核心特性 ============ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="feat.eyebrow">KEY FEATURES</div>
+      <h2 class="section-title" data-i18n="feat.title">为真实战斗而生</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.5 2.5-1 3 2 .5 4 2 4 5v3a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-3c0-3 2-4.5 4-5-.5-.5-1-1.5-1-3a4 4 0 0 1 4-4z"/>
+            <path d="M9 14h6M9 17h6" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat.f1.title">🧠 计算机视觉引擎</h3>
+        <p data-i18n="feat.f1.desc">自研窄域识别引擎，针对 WoW UI 数字优化，模型不足 1MB，单次推理 <5ms，CPU 占用不足 10%。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 3v18h18"/>
+            <rect x="7" y="12" width="3" height="6" fill="currentColor" opacity="0.3"/>
+            <rect x="12" y="8" width="3" height="10" fill="currentColor" opacity="0.5"/>
+            <rect x="17" y="5" width="3" height="13" fill="currentColor" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat.f2.title">📊 SimC ±2% DPS 对齐</h3>
+        <p data-i18n="feat.f2.desc">内置 SimulationCraft 闭环评估，JSON 规则转 APL 跑分，DPS 达到 SimC 理论值 ±2%。量化每个技能的次数与占比差距，迭代到收敛。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat.f3.title">🤖 自动打断 · 减伤 · 焦点</h3>
+        <p data-i18n="feat.f3.desc">自动打断施法（不断钢条）、自动焦点打断、按血量阈值自动减伤释放防御技能、顺滑插入技能。坦克与治疗专精完整支持。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/>
+            <path d="M9 12l2 2 4-4" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat.f4.title">🛡️ 12.0 全面适配</h3>
+        <p data-i18n="feat.f4.desc">WoW 12.0 对 buff、debuff、技能冷却、充能、战斗状态、副本环境全面封禁 API 并严控 taint。Permes 对 taint 做了全面处理，多技术协同绕过，12.0 依然稳定运行。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="3"/>
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M12 1v3M12 20v3M1 12h3M20 12h3" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat.f5.title">🎯 一键校准</h3>
+        <p data-i18n="feat.f5.desc">游戏内一键校准，自动检测对齐 OCR 区域，调试过程压缩到 1 分钟，零专业知识门槛。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat.f6.title">🌐 中英双语</h3>
+        <p data-i18n="feat.f6.desc">中文客户端走短路逻辑，零感知；英文环境自动翻译 UI 与宏，单一真相源，原生双语体验。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 技术架构（简约） ============ -->
+<section class="section section-alt" id="arch">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="arch.eyebrow">ARCHITECTURE</div>
+      <h2 class="section-title" data-i18n="arch.title">清晰分层，各司其职</h2>
+      <p class="section-lead" data-i18n="arch.lead">Lua 插件负责渲染，Python 核心负责识别与决策。</p>
+    </div>
+    <div class="arch-stack">
+      <div class="arch-layer reveal">
+        <div class="arch-layer-head">
+          <span class="arch-layer-num">L1</span>
+          <h3 data-i18n="arch.l1.title">WoW 插件层</h3>
+        </div>
+        <p data-i18n="arch.l1.desc">状态渲染 · taint 全面处理 · 宏本地化</p>
+      </div>
+      <div class="arch-connector">
+        <svg width="16" height="24" viewBox="0 0 16 24"><path d="M8 0v20M3 15l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="arch-layer reveal">
+        <div class="arch-layer-head">
+          <span class="arch-layer-num">L2</span>
+          <h3 data-i18n="arch.l2.title">感知层</h3>
+        </div>
+        <p data-i18n="arch.l2.desc">截图采集 · 计算机视觉 · ROI 自动定位 · CPU <10%</p>
+      </div>
+      <div class="arch-connector">
+        <svg width="16" height="24" viewBox="0 0 16 24"><path d="M8 0v20M3 15l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="arch-layer reveal">
+        <div class="arch-layer-head">
+          <span class="arch-layer-num">L3</span>
+          <h3 data-i18n="arch.l3.title">决策层</h3>
+        </div>
+        <p data-i18n="arch.l3.desc">优先级规则 · 上下文聚合 · 自动打断/减伤 · 顺滑插入</p>
+      </div>
+      <div class="arch-connector">
+        <svg width="16" height="24" viewBox="0 0 16 24"><path d="M8 0v20M3 15l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="arch-layer reveal">
+        <div class="arch-layer-head">
+          <span class="arch-layer-num">L4</span>
+          <h3 data-i18n="arch.l4.title">执行层</h3>
+        </div>
+        <p data-i18n="arch.l4.desc">内核级按键保护 · 模拟真实硬件输入</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 计算机视觉 ============ -->
+<section class="section" id="ocr">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="ocr.eyebrow">COMPUTER VISION</div>
+      <h2 class="section-title" data-i18n="ocr.title">12.0 全面适配的视觉引擎</h2>
+      <p class="section-lead" data-i18n="ocr.lead">WoW 12.0 对 buff、debuff、技能冷却、充能、战斗状态、副本环境全面封禁 API 并严控 taint。Permes 对 taint 做了全面处理，多技术协同绕过，通过计算机视觉直接识别屏幕状态--这是不读内存的唯一可行路径。</p>
+    </div>
+    <div class="ocr-content">
+      <div class="ocr-phases ocr-phases-3">
+        <div class="ocr-phase reveal">
+          <div class="ocr-phase-num">①</div>
+          <h3 data-i18n="ocr.p1.title">① taint 全面处理</h3>
+          <p data-i18n="ocr.p1.desc">对 12.0 的 taint 限制做全面处理，多技术协同绕过，确保状态信息在战斗与副本环境中稳定可读。</p>
+        </div>
+        <div class="ocr-phase reveal">
+          <div class="ocr-phase-num">②</div>
+          <h3 data-i18n="ocr.p2.title">② 窄域识别引擎</h3>
+          <p data-i18n="ocr.p2.desc">针对 WoW UI 数字窄域训练，仅识别 0-9。模型不足 1MB，单次推理 <5ms，CPU 即可实时运行。</p>
+        </div>
+        <div class="ocr-phase reveal">
+          <div class="ocr-phase-num">③</div>
+          <h3 data-i18n="ocr.p3.title">③ 一键自动校准</h3>
+          <p data-i18n="ocr.p3.desc">游戏内一键校准，自动检测对齐 OCR 区域，调试过程压缩到 1 分钟，零专业知识门槛。</p>
+        </div>
+      </div>
+      <div class="ocr-table-wrap reveal">
+        <table class="ocr-table">
+          <thead>
+            <tr>
+              <th data-i18n="ocr.th.model">组件</th>
+              <th data-i18n="ocr.th.note">说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono" data-i18n="ocr.r1.model">taint 处理</td>
+              <td data-i18n="ocr.r1.note">12.0 全面适配，多技术协同绕过</td>
+            </tr>
+            <tr>
+              <td class="mono" data-i18n="ocr.r2.model">窄域识别</td>
+              <td data-i18n="ocr.r2.note">0-9 识别，<1MB，<5ms</td>
+            </tr>
+            <tr>
+              <td class="mono" data-i18n="ocr.r3.model">自动校准</td>
+              <td data-i18n="ocr.r3.note">一键校准，1 分钟搞定</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 职业模块 ============ -->
+<section class="section section-alt" id="modules">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="mod.eyebrow">CLASS MODULES</div>
+      <h2 class="section-title" data-i18n="mod.title">13 职业 · 全专精覆盖</h2>
+      <p class="section-lead" data-i18n="mod.lead">输出、坦克、治疗三大职责完整支持。按职责筛选，查看各专精模块状态。</p>
+    </div>
+    <div class="mod-filters reveal">
+      <button class="mod-filter active" data-filter="all" data-i18n="mod.filter.all">全部</button>
+      <button class="mod-filter" data-filter="dps" data-i18n="mod.filter.dps">输出</button>
+      <button class="mod-filter" data-filter="tank" data-i18n="mod.filter.tank">坦克</button>
+      <button class="mod-filter" data-filter="heal" data-i18n="mod.filter.heal">治疗</button>
+    </div>
+    <div class="mod-grid" id="modGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SimC 评估 ============ -->
+<section class="section" id="simc">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="simc.eyebrow">SIMC EVALUATION</div>
+      <h2 class="section-title" data-i18n="simc.title">DPS 对齐 SimC ±2%</h2>
+      <p class="section-lead" data-i18n="simc.lead">把 Permes JSON 规则转换为 SimulationCraft APL，跑分对比理论基准，量化每个技能的次数与占比差距，迭代到收敛。最终 DPS 达到 SimC 理论值 ±2%。</p>
+    </div>
+    <div class="simc-content">
+      <div class="simc-steps reveal">
+        <div class="simc-step"><span class="simc-step-num">1</span><span data-i18n="simc.s1">规则转 APL</span></div>
+        <div class="simc-step-arrow">-></div>
+        <div class="simc-step"><span class="simc-step-num">2</span><span data-i18n="simc.s2">simc.exe 跑分</span></div>
+        <div class="simc-step-arrow">-></div>
+        <div class="simc-step"><span class="simc-step-num">3</span><span data-i18n="simc.s3">对比技能占比</span></div>
+        <div class="simc-step-arrow">-></div>
+        <div class="simc-step"><span class="simc-step-num">4</span><span data-i18n="simc.s4">迭代改写</span></div>
+      </div>
+      <div class="simc-demo reveal">
+        <div class="simc-code">
+          <div class="code-header">
+            <span class="code-dot dot-r"></span>
+            <span class="code-dot dot-y"></span>
+            <span class="code-dot dot-g"></span>
+            <span class="code-title">permes_to_apl.simc</span>
+          </div>
+          <pre class="code-body"><code><span class="c-kw">actions</span>+<span class="c-fn">execute</span>=<span class="c-str">"bloodthirst"</span>,if=<span class="c-var">buff</span>.<span class="c-prop">recklessness</span>.<span class="c-prop">up</span>
+<span class="c-kw">actions</span>+<span class="c-fn">execute</span>=<span class="c-str">"raging_blow"</span>,if=<span class="c-var">rage</span>&gt;<span class="c-num">90</span>
+<span class="c-kw">actions</span>+<span class="c-fn">execute</span>=<span class="c-str">"whirlwind"</span>,if=<span class="c-var">buff</span>.<span class="c-prop">meat_cleaver</span>.<span class="c-prop">stack</span>&lt;<span class="c-num">2</span>
+<span class="c-cmt"># Permes rule -> APL auto-converted</span></code></pre>
+        </div>
+        <div class="simc-chart">
+          <div class="chart-title">DPS Comparison</div>
+          <div class="chart-subtitle">天启邪 DK · 无 buff · 单体</div>
+          <div class="chart-bars">
+            <div class="chart-row">
+              <div class="chart-label">SimC Baseline</div>
+              <div class="chart-track">
+                <div class="chart-fill chart-baseline" style="width: 97%">
+                  <span class="chart-val">10,531</span>
+                </div>
+              </div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-label">Permes</div>
+              <div class="chart-track">
+                <div class="chart-fill chart-permes" style="width: 100%">
+                  <span class="chart-val">10,784</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-badge" data-i18n="simc.metric">DPS 对齐 ±2%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 对比 ============ -->
+<section class="section section-alt" id="compare">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="cmp.eyebrow">WHY PERMES</div>
+      <h2 class="section-title" data-i18n="cmp.title">不同技术路线对比</h2>
+    </div>
+    <div class="cmp-table-wrap reveal">
+      <div class="cmp-scroll">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th data-i18n="cmp.th.f">特性</th>
+              <th data-i18n="cmp.th.macro">12.0 一键宏</th>
+              <th data-i18n="cmp.th.unlocker">解锁器</th>
+              <th data-i18n="cmp.th.hekili">基于 Hekili 宏</th>
+              <th class="cmp-permes-col" data-i18n="cmp.th.permes">Permes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="cmp.r1.f">12.0 支持</td>
+              <td data-i18n="cmp.r1.macro">支持</td>
+              <td data-i18n="cmp.r1.unlocker">不影响</td>
+              <td class="cmp-meh" data-i18n="cmp.r1.hekili">已停更</td>
+              <td class="cmp-good" data-i18n="cmp.r1.p">持续更新</td>
+            </tr>
+            <tr>
+              <td data-i18n="cmp.r2.f">工作方式</td>
+              <td data-i18n="cmp.r2.macro">单纯取色</td>
+              <td class="cmp-meh" data-i18n="cmp.r2.unlocker">破解游戏程序</td>
+              <td data-i18n="cmp.r2.hekili">游戏内提示</td>
+              <td class="cmp-good" data-i18n="cmp.r2.p">计算机视觉 + 自动按键</td>
+            </tr>
+            <tr>
+              <td data-i18n="cmp.r3.f">12.0 API 封禁</td>
+              <td class="cmp-meh" data-i18n="cmp.r3.macro">无法应对</td>
+              <td data-i18n="cmp.r3.unlocker">不影响</td>
+              <td class="cmp-meh" data-i18n="cmp.r3.hekili">无法应对</td>
+              <td class="cmp-good" data-i18n="cmp.r3.p">多技术协同绕过</td>
+            </tr>
+            <tr>
+              <td data-i18n="cmp.r4.f">内存读取</td>
+              <td data-i18n="cmp.r4.macro">无</td>
+              <td class="cmp-meh" data-i18n="cmp.r4.unlocker">读取游戏内存</td>
+              <td data-i18n="cmp.r4.hekili">无</td>
+              <td class="cmp-good" data-i18n="cmp.r4.p">完全不读</td>
+            </tr>
+            <tr>
+              <td data-i18n="cmp.r5.f">DPS 对齐</td>
+              <td class="cmp-meh" data-i18n="cmp.r5.macro">SimC -40%~60%</td>
+              <td class="cmp-meh" data-i18n="cmp.r5.unlocker">参差不齐</td>
+              <td data-i18n="cmp.r5.hekili">依赖手打</td>
+              <td class="cmp-good" data-i18n="cmp.r5.p">SimC ±2%</td>
+            </tr>
+            <tr>
+              <td data-i18n="cmp.r6.f">自动打断/减伤</td>
+              <td class="cmp-meh" data-i18n="cmp.r6.macro">大部分无法识别钢条</td>
+              <td data-i18n="cmp.r6.unlocker">支持</td>
+              <td class="cmp-meh" data-i18n="cmp.r6.hekili">无</td>
+              <td class="cmp-good" data-i18n="cmp.r6.p">完整支持</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 使用流程（简约：无 desc） ============ -->
+<section class="section" id="start">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="start.eyebrow">GETTING STARTED</div>
+      <h2 class="section-title" data-i18n="start.title">快速上手</h2>
+      <p class="start-note" data-i18n="start.note">全程 5 分钟搞定</p>
+    </div>
+    <div class="start-timeline">
+      <div class="start-step reveal">
+        <div class="start-step-num">1</div>
+        <h3 data-i18n="start.1.t">启动 Hub</h3>
+      </div>
+      <div class="start-step reveal">
+        <div class="start-step-num">2</div>
+        <h3 data-i18n="start.2.t">自动安装插件</h3>
+      </div>
+      <div class="start-step reveal">
+        <div class="start-step-num">3</div>
+        <h3 data-i18n="start.3.t">选择职业模块</h3>
+      </div>
+      <div class="start-step reveal">
+        <div class="start-step-num">4</div>
+        <h3 data-i18n="start.4.t">一键校准</h3>
+      </div>
+      <div class="start-step reveal">
+        <div class="start-step-num">5</div>
+        <h3 data-i18n="start.5.t">启动循环</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-alt" id="faq">
+  <div class="container container-narrow">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="faq.eyebrow">FAQ</div>
+      <h2 class="section-title" data-i18n="faq.title">常见问题</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item" open>
+        <summary class="faq-q">
+          <span data-i18n="faq.q1">Permes 会读取或修改游戏内存吗？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a1">不会。Permes 不读取游戏内存、不注入进程、不修改客户端文件。仅通过截图观察屏幕像素，从根源杜绝封号风险，法律层面亦无争议。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span data-i18n="faq.q2">WoW 12.0 封禁了 API，Permes 怎么应对？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a2">12.0 对 buff、debuff、技能冷却、充能、战斗状态、副本环境全面封禁 API 并严控 taint。Permes 对 taint 做了全面处理，多技术协同绕过，通过计算机视觉直接识别屏幕状态，12.0 依然稳定运行。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span data-i18n="faq.q3">CPU 占用高吗？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a3">极低。窄域识别引擎针对 WoW UI 优化，模型不足 1MB，单次推理 <5ms，整体 CPU 占用不足 10%，无需独显。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span data-i18n="faq.q4">DPS 水平如何？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a4">Permes 内置 SimulationCraft 闭环评估，JSON 规则转 APL 跑分，DPS 达到 SimC 理论值 ±2%。每个技能的次数与占比差距量化可见，迭代到收敛。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span data-i18n="faq.q5">支持坦克和治疗吗？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a5">完整支持。输出、坦克、治疗三大职责全覆盖。坦克含自动减伤、按血量阈值释放防御技能；治疗含自动焦点打断（不断钢条）、自动选择受伤目标。顺滑插入技能让循环自然流畅。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span data-i18n="faq.q6">能否顺滑插入技能？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a6">可以。Permes 的规则引擎支持顺滑插入技能，在 GCD 间隙自动插入瞬发技能，不打断主循环节奏，让输出循环自然流畅，最大化 DPS。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span data-i18n="faq.q7">Permes Hub 有什么特色？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a" data-i18n="faq.a7">Hub 内置 AI 客服随时答疑，积分系统提供多重福利。一切操作在 Hub 中完成，无需下载解压，启动即用。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 下载 CTA ============ -->
+<section class="section section-cta" id="download">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2 class="cta-title">Permes <span class="accent">v7.6.5</span></h2>
+      <p class="cta-sub" data-i18n="hero.note">仅支持 Windows · 中英双语 · 不读内存 · 账号零风险</p>
+      <a href="#" class="btn btn-primary btn-lg" data-i18n="nav.cta" onclick="return false">获取 Permes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="assets/img/logo.png" alt="Permes">
+          <span>Permes</span>
+        </div>
+        <p class="footer-tagline" data-i18n="footer.tagline">AI 驱动的 WoW 战斗辅助</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-info">
+          <div class="footer-info-row">
+            <span data-i18n="footer.version">当前版本</span>
+            <span class="mono">v7.6.5</span>
+          </div>
+          <div class="footer-info-row">
+            <span data-i18n="footer.platform">平台</span>
+            <span data-i18n="footer.platform.v">Windows</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-links">
+          <a href="#how" data-i18n="nav.how">工作原理</a>
+          <a href="#safety" data-i18n="nav.safety">账号安全</a>
+          <a href="#modules" data-i18n="nav.modules">职业模块</a>
+          <a href="#faq" data-i18n="nav.faq">常见问题</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer" data-i18n="footer.disclaimer">本项目仅供学习与研究使用，请遵守游戏服务条款与相关法律法规。</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Permes. 用中文开发，英文自动适配。</p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script src="js/i18n.js"></script>
+<script src="js/modules-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
