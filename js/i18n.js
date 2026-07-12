@@ -27,6 +27,7 @@ window.I18N = {
     "hero.desc": "Permes 不读取游戏内存、不注入进程，通过计算机视觉技术识别屏幕状态，规则引擎判定技能优先级发送按键。整条链路最低 50ms，CPU 占用不足 10%，DPS 对齐 SimC 理论值 ±2%。",
     "hero.cta.primary": "获取 Permes",
     "hero.cta.secondary": "查看工作原理",
+    "hero.cta.discord": "加入 Discord",
     "hero.note": "仅支持 Windows · 中英双语 · 不读内存 · 账号零风险",
 
     "demo.bar.master": "总开关",
@@ -236,6 +237,7 @@ window.I18N = {
     "hero.desc": "Permes reads no game memory and injects nothing. It recognizes on-screen state via computer vision, decides the optimal skill through a rule engine, and sends keystrokes - the full loop as fast as 50ms, CPU usage under 10%, DPS aligned to SimC theoretical value ±2%.",
     "hero.cta.primary": "Get Permes",
     "hero.cta.secondary": "See how it works",
+    "hero.cta.discord": "Join Discord",
     "hero.note": "Windows only · Bilingual (ZH/EN) · No memory read · Zero account risk",
 
     "demo.bar.master": "Master",
