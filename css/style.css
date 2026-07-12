@@ -107,6 +107,18 @@ img { max-width: 100%; display: block; }
   background: var(--accent-dim);
   border-color: var(--accent);
 }
+.btn-discord {
+  background: transparent;
+  color: #5865F2;
+  border-color: #5865F2;
+}
+.btn-discord:hover {
+  background: rgba(88, 101, 242, 0.12);
+  border-color: #7289DA;
+  color: #7289DA;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(88, 101, 242, 0.25);
+}
 .btn-sm { font-size: 13px; padding: 8px 16px; }
 .btn-lg { font-size: 17px; padding: 14px 32px; }
 
