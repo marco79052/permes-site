@@ -18,8 +18,10 @@ window.MODULES = [
   { folder: "防骑",        zh: "防护",   en: "Protection",    class: "圣骑士",   classEn: "Paladin",       role: "tank", released: true,  visibility: "public",   icon: "Prot Pally.png" },
 
   // ---- 战士 ----
-  { folder: "武器战",      zh: "武器",   en: "Arms",          class: "战士",     classEn: "Warrior",       role: "dps",  released: true,  visibility: "public",   icon: "A Warrior.png", hot: true },
-  { folder: "狂暴战",      zh: "狂怒",   en: "Fury",          class: "战士",     classEn: "Warrior",       role: "dps",  released: true,  visibility: "public",   icon: "F Warrior.png", hot: true },
+  { folder: "武器战",      zh: "巨神兵武器战", en: "Colossus Arms",       class: "战士", classEn: "Warrior", role: "dps",  released: true, visibility: "public", icon: "A Warrior.png", hot: true },
+  { folder: "武器战_定制", zh: "屠戮武器战",   en: "Slayer Arms",         class: "战士", classEn: "Warrior", role: "dps",  released: true, visibility: "public", icon: "A Warrior.png" },
+  { folder: "狂暴战",      zh: "山丘狂暴战",   en: "Mountain Thane Fury", class: "战士", classEn: "Warrior", role: "dps",  released: true, visibility: "public", icon: "F Warrior.png", hot: true },
+  { folder: "狂暴战_定制", zh: "屠戮狂暴战",   en: "Slayer Fury",         class: "战士", classEn: "Warrior", role: "dps",  released: true, visibility: "public", icon: "F Warrior.png" },
   { folder: "防战",        zh: "防护",   en: "Protection",    class: "战士",     classEn: "Warrior",       role: "tank", released: true,  visibility: "public",   icon: "Prot Warrior.png" },
 
   // ---- 法师 ----
