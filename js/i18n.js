@@ -28,6 +28,8 @@ window.I18N = {
     "hero.cta.primary": "获取 Permes",
     "hero.cta.secondary": "查看工作原理",
     "hero.cta.discord": "加入 Discord",
+    "hero.cta.douyin": "加入抖音粉丝群",
+    "hero.cta.bilibili": "Bilibili 主页",
     "hero.note": "仅支持 Windows · 中英双语 · 不读内存 · 账号零风险",
 
     "demo.bar.master": "总开关",
@@ -238,6 +240,8 @@ window.I18N = {
     "hero.cta.primary": "Get Permes",
     "hero.cta.secondary": "See how it works",
     "hero.cta.discord": "Join Discord",
+    "hero.cta.douyin": "Douyin Group",
+    "hero.cta.bilibili": "Bilibili",
     "hero.note": "Windows only · Bilingual (ZH/EN) · No memory read · Zero account risk",
 
     "demo.bar.master": "Master",

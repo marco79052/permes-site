@@ -119,6 +119,30 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(88, 101, 242, 0.25);
 }
+.btn-douyin {
+  background: transparent;
+  color: #FE2C55;
+  border-color: #FE2C55;
+}
+.btn-douyin:hover {
+  background: rgba(254, 44, 85, 0.12);
+  border-color: #25F4EE;
+  color: #25F4EE;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(254, 44, 85, 0.25);
+}
+.btn-bilibili {
+  background: transparent;
+  color: #FB7299;
+  border-color: #FB7299;
+}
+.btn-bilibili:hover {
+  background: rgba(251, 114, 153, 0.12);
+  border-color: #00A1D6;
+  color: #00A1D6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(251, 114, 153, 0.25);
+}
 .btn-sm { font-size: 13px; padding: 8px 16px; }
 .btn-lg { font-size: 17px; padding: 14px 32px; }
 
