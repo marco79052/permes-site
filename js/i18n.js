@@ -30,6 +30,8 @@ window.I18N = {
     "hero.cta.discord": "加入 Discord",
     "hero.cta.douyin": "抖音主页",
     "hero.cta.bilibili": "Bilibili 主页",
+    "hero.cta.wechat": "微信客服",
+    "wechat.copied": "微信号已复制，请在微信添加好友",
     "hero.note": "仅支持 Windows · 中英双语 · 不读内存 · 账号零风险",
 
     "demo.bar.master": "总开关",
@@ -242,6 +244,8 @@ window.I18N = {
     "hero.cta.discord": "Join Discord",
     "hero.cta.douyin": "Douyin",
     "hero.cta.bilibili": "Bilibili",
+    "hero.cta.wechat": "WeChat Support",
+    "wechat.copied": "WeChat ID copied, please add as friend in WeChat",
     "hero.note": "Windows only · Bilingual (ZH/EN) · No memory read · Zero account risk",
 
     "demo.bar.master": "Master",

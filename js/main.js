@@ -346,6 +346,50 @@
     btn.addEventListener('click', handleDownloadClick);
   });
 
+  // ============ 微信客服复制 ============
+  var WECHAT_ID = 'liliccc12';
+  var wechatBtn = document.getElementById('wechatBtn');
+  if (wechatBtn) {
+    wechatBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var lang = getLang();
+      var dict = window.I18N[lang];
+      var hint = dict['wechat.copied'] || '微信号已复制，请在微信添加好友';
+      // 尝试复制到剪贴板
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(WECHAT_ID).then(function () {
+          showToast(hint + '：' + WECHAT_ID);
+        }).catch(function () {
+          fallbackCopy(WECHAT_ID, hint);
+        });
+      } else {
+        fallbackCopy(WECHAT_ID, hint);
+      }
+    });
+  }
+
+  function fallbackCopy(text, hint) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    showToast(hint + '：' + text);
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('downloadToast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function () {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+
   // ============ 初始化 ============
   applyLang(getLang());
   handleScroll();

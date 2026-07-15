@@ -143,6 +143,18 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(251, 114, 153, 0.25);
 }
+.btn-wechat {
+  background: transparent;
+  color: #07C160;
+  border-color: #07C160;
+}
+.btn-wechat:hover {
+  background: rgba(7, 193, 96, 0.12);
+  border-color: #2dd470;
+  color: #2dd470;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(7, 193, 96, 0.25);
+}
 .btn-sm { font-size: 13px; padding: 8px 16px; }
 .btn-lg { font-size: 17px; padding: 14px 32px; }
 
