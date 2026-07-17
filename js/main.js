@@ -283,7 +283,7 @@
   if (simcChart) chartObserver.observe(simcChart);
 
   // ============ 下载限流 ============
-  var DOWNLOAD_URL = 'https://dl.permes.xin/HubV4.0.exe';
+  var DOWNLOAD_URL = 'https://dl.permes.xin/PermesHubSetup.exe';
   var DOWNLOAD_LIMIT = 5;
   var DOWNLOAD_KEY = 'permes_download_log';
 
