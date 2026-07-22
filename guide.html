@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permes 用户使用手册</title>
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<style>
+  :root {
+    --bg: #141414; --bg-elev: #1a1a1a; --border: #2a2a2a;
+    --accent: #00ff88; --text: #ffffff; --text-mut: #a0a0a0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    line-height: 1.8;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  .topbar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--bg-elev); position: sticky; top: 0; z-index: 10;
+  }
+  .topbar img { width: 26px; height: 26px; }
+  .topbar .name { font-weight: 700; }
+  .topbar a.home {
+    margin-left: auto; color: var(--accent); text-decoration: none; font-size: 14px;
+  }
+  h1 { font-size: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 12px; }
+  h2 {
+    font-size: 23px; margin-top: 48px; color: var(--accent);
+    border-left: 4px solid var(--accent); padding-left: 12px;
+  }
+  h3 { font-size: 18px; margin-top: 32px; }
+  a { color: var(--accent); }
+  code {
+    background: #0d0d0d; border: 1px solid var(--border); border-radius: 4px;
+    padding: 1px 6px; font-size: 0.92em;
+  }
+  pre {
+    background: #0d0d0d; border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; overflow-x: auto;
+  }
+  pre code { background: none; border: none; padding: 0; }
+  table {
+    border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px;
+  }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+  th { background: var(--bg-elev); color: var(--accent); }
+  img {
+    max-width: 100%; border: 1px solid var(--border); border-radius: 8px;
+    margin: 12px 0; display: block;
+  }
+  blockquote {
+    margin: 16px 0; padding: 10px 16px; border-left: 4px solid var(--accent);
+    background: var(--bg-elev); color: var(--text-mut); border-radius: 0 8px 8px 0;
+  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <img src="assets/img/logo.png" alt="Permes">
+  <span class="name">Permes</span>
+  <a class="home" href="index.html">← 返回官网首页</a>
+</div>
+<div class="wrap">
+<h1 id="permes">Permes 用户使用手册</h1>
+<blockquote>
+<p>适用产品：Permes Hub（启动器）+ Permes 执行端（游戏内辅助）<br />
+整理来源：官方教学视频（最新版教学视频 / 英文教学 / 教学视频补充）、帮助与诊断知识库、官方界面截图<br />
+最后更新：2026-07-23</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录</h2>
+<ul>
+<li><a href="#一认识-permes">一、认识 Permes</a></li>
+<li><a href="#二快速上手新用户必读">二、快速上手（新用户必读）</a></li>
+<li><a href="#三游戏内首次设置">三、游戏内首次设置</a></li>
+<li><a href="#四ai-模型训练识别不准时必做">四、AI 模型训练（识别不准时必做）</a></li>
+<li><a href="#五日常使用">五、日常使用</a></li>
+<li><a href="#六进阶功能">六、进阶功能</a></li>
+<li><a href="#七hub-其他功能">七、Hub 其他功能</a></li>
+<li><a href="#八使用前环境检查清单">八、使用前环境检查清单</a></li>
+<li><a href="#九故障排查">九、故障排查</a></li>
+<li><a href="#十常见问题-faq">十、常见问题 FAQ</a></li>
+<li><a href="#附录">附录</a></li>
+</ul>
+<hr />
+<h2 id="permes_1">一、认识 Permes</h2>
+<p>Permes 由两部分组成，<strong>两者必须同时运行</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Permes Hub</strong></td>
+<td>启动器与管理器：激活码登录、下载/更新执行端、充值续费、积分活动、客服支持</td>
+</tr>
+<tr>
+<td><strong>Permes 执行端</strong></td>
+<td>实际干活的程序：读取游戏画面（OCR + 像素识别）、按输出循环自动按键</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠ <strong>使用期间请始终保持 Permes Hub 运行</strong>（执行端窗口顶部有常驻提示）。关掉 Hub，执行端会停止工作。</p>
+</blockquote>
+<p><img alt="Hub 主界面与执行端控制台" src="assets/guide/hub-main.png" /></p>
+<p><em>左：Permes Hub 主界面（启动 Permes、充值、设置、积分排行、邀请赚积分、积分抽奖、小游戏等入口）。右：Permes 执行端控制台（启动/停止、安装插件、校准、模型训练、输出循环等功能标签）。</em></p>
+<hr />
+<h2 id="_2">二、快速上手（新用户必读）</h2>
+<p>完整流程：<strong>安装 Hub → 激活 → 启动执行端 → 安装游戏插件 → 进游戏设置 → 校准 →（可选）模型训练 → 开打</strong>。</p>
+<h3 id="21-permes-hub">2.1 安装 Permes Hub</h3>
+<ol>
+<li>运行安装包 <code>PermesHub_Setup.exe</code>。</li>
+<li>安装向导会提示：<strong>安装路径与程序名称将自动伪装，无需手动设置</strong>——这是正常现象，不是中毒。</li>
+<li>选择安装盘符，按需勾选"创建桌面快捷方式""开机自动启动""安装完成后立即运行"，点击<strong>安装</strong>。</li>
+</ol>
+<h3 id="22">2.2 激活与登录</h3>
+<ol>
+<li>打开 Hub，输入你购买的<strong>激活码</strong>完成激活。</li>
+<li>激活后 Hub 主界面会显示：模块范围、到期时间（或"永久有效"）、积分余额。</li>
+<li>激活码与设备绑定，更换电脑需要解绑（见 <a href="#十常见问题-faq">FAQ</a>）。</li>
+</ol>
+<h3 id="23-permes">2.3 启动 Permes 执行端</h3>
+<ol>
+<li>点击 Hub 主界面的绿色大按钮 <strong>启动 Permes</strong>。</li>
+<li>首次启动会<strong>自动下载执行端</strong>，等待进度条走完即可。</li>
+<li>执行端启动后是一个控制台窗口，顶部一排功能标签：<br />
+<strong>安装插件｜校准坐标｜模型训练｜输出循环｜生存/治疗设置｜切换模块｜热键设置｜SimC 模拟</strong>。</li>
+</ol>
+<blockquote>
+<p>如果你使用罗技鼠标，可点击 Hub 的 <strong>GHUB 按键保护</strong> 按钮，它会自动打开 Logitech G HUB 配合按键保护。</p>
+</blockquote>
+<h3 id="24">2.4 安装游戏插件</h3>
+<ol>
+<li>在执行端点击 <strong>安装插件</strong>，弹出"选择要安装的职业"对话框。</li>
+<li><strong>确认目标目录指向正式服的 <code>_retail_</code> 文件夹</strong>（例如 <code>D:\World of Warcraft\_retail_</code>）——这是最常见的出错点，选错目录插件不会生效。</li>
+<li>勾选你玩的职业（默认全选），点 <strong>OK</strong>。</li>
+</ol>
+<p><img alt="选择安装职业" src="assets/guide/install-classes.png" /></p>
+<blockquote>
+<p>插件安装后在游戏插件列表里显示为一串随机字符名（例如 <strong>P3F8847DE</strong>），这是刻意的伪装，<strong>找不到"Permes"字样是正常的</strong>。</p>
+</blockquote>
+<h3 id="25">2.5 切换模块（选职业专精）</h3>
+<p><strong>进游戏后第一件事</strong>：在执行端点 <strong>切换模块</strong>，选择你当前角色的<strong>职业 + 专精</strong>，点确定。</p>
+<blockquote>
+<p>⚠ 玩什么号就选什么专精。选错专精，输出循环、按键、识别区域全都不对。</p>
+</blockquote>
+<p><img alt="切换模块" src="assets/guide/switch-module.png" /></p>
+<hr />
+<h2 id="_3">三、游戏内首次设置</h2>
+<h3 id="31">3.1 启用插件</h3>
+<ol>
+<li>按 <strong>ESC</strong> 打开游戏菜单 → 点 <strong>插件（AddOns）</strong>。</li>
+<li>勾选顶部的 <strong>加载过期插件</strong>。</li>
+<li>确认 Permes 插件（随机名，如 P3F8847DE）已勾选；如有插件标红"Requires Reload"，点 <strong>重载界面（Reload UI）</strong>。</li>
+</ol>
+<p><img alt="游戏菜单 → 插件" src="assets/guide/enable-addon-menu.png" /><br />
+<img alt="插件列表" src="assets/guide/enable-addon-list.png" /></p>
+<h3 id="32-cooldown-manager">3.2 开启冷却管理器（Cooldown Manager）</h3>
+<p>Permes 通过游戏自带的<strong>冷却管理器</strong>读取技能冷却和 Buff 层数，必须正确设置：</p>
+<ol>
+<li>按 ESC → <strong>编辑模式（Edit Mode）</strong>，勾选显示 <strong>冷却管理器</strong>。</li>
+<li>选中"<strong>重要技能冷却</strong>"框体，建议设置：</li>
+<li>方位：水平；图标方向：右</li>
+<li><strong>图标尺寸 ≥ 110%（推荐 120% 以上）</strong>——图标太小会识别不到</li>
+<li>可见性：始终可见；勾选 显示倒计时、显示说明条</li>
+<li>选中"<strong>追踪的增益效果</strong>"框体，同样设置，并且：</li>
+<li>⚠ <strong>"未激活时隐藏"一定要取消勾选</strong>，否则 Permes 读不到 Buff 数字。</li>
+</ol>
+<p><img alt="HUD 编辑模式设置" src="assets/guide/hud-edit-mode.png" /><br />
+<img alt="追踪的增益效果设置" src="assets/guide/hud-tracked-buffs.png" /><br />
+<img alt="重要技能冷却框体设置" src="assets/guide/hud-essential-cds.png" /></p>
+<h3 id="33">3.3 导入官方布局</h3>
+<p>如果你的冷却管理器布局和官方要求不一致（屏幕上会弹出提示条"<strong>检测到冷却管理器缺少下列技能</strong>"）：</p>
+<ol>
+<li><strong>不要自己手动摆框体</strong>，直接点击游戏内 Permes 悬浮菜单的 <strong>官方布局</strong>（或提示条上的"导入官方布局"）。</li>
+<li>游戏会自动 reload 一次。</li>
+<li>⚠ 导入后<strong>不要移动 Permes 需要读取的那些图标</strong>——像素识别按固定位置取图，挪了位置就识别不到。</li>
+</ol>
+<h3 id="34">3.4 校准坐标</h3>
+<p>校准是让执行端知道"屏幕上哪个位置放着哪个数字"的过程：</p>
+<ol>
+<li>在执行端点击 <strong>校准坐标</strong>（或点游戏内悬浮菜单的"校准"）。</li>
+<li>游戏聊天框会输出日志：<code>已导出 5 个 ROI 坐标，请执行 /reload</code>。</li>
+<li><strong>在聊天框输入 <code>/reload</code> 重载界面</strong>——校准必须 reload 才生效。</li>
+<li>悬浮菜单状态从"校准：待 reload"变为 <strong>校准：已完成</strong>，即成功。</li>
+</ol>
+<p><img alt="悬浮菜单（红色 NotDone 表示未校准）" src="assets/guide/dock-menu.png" /></p>
+<p><strong>验证校准是否成功</strong>：</p>
+<ol>
+<li>点执行端 <strong>▶ 启动</strong>，去木桩区打桩。</li>
+<li>观察执行端"<strong>OCR 识别</strong>"区域的数字（如腐化层数、天灾打击层数）是否与游戏内 Buff 图标上的数字实时一致。</li>
+<li>一致 = 校准成功；不一致 = 去 <a href="#九故障排查">第九章 故障排查</a>。</li>
+</ol>
+<hr />
+<h2 id="ai">四、AI 模型训练（识别不准时必做）</h2>
+<p>Permes 的数字识别模型是<strong>本地训练、本地运行</strong>的。以下情况必须自己训练一次模型：</p>
+<ul>
+<li>首次使用（你的分辨率 / DPI / UI 缩放与官方默认环境不同）</li>
+<li>更换电脑、显示器、分辨率或游戏 UI 缩放之后</li>
+<li>校准成功但 OCR 识别数字仍然错误</li>
+</ul>
+<h3 id="_4">训练步骤</h3>
+<ol>
+<li>在执行端点击 <strong>模型训练</strong>。</li>
+<li>如果提示"检测到已有当前模块微调模型"：</li>
+<li>从没训练过自己模型的 → 选 <strong>手动重新训练</strong></li>
+<li>已有模型、想继续优化的 → 选 <strong>自动/手动加强训练</strong></li>
+<li>进入<strong>自动采集</strong>：程序每 2 秒截图一次，共 30 张。此期间你要：</li>
+<li>待在<strong>木桩区</strong>持续战斗；</li>
+<li><strong>确保冷却管理器的图标和 Buff 数字在不断变化</strong>（采集的就是这些数字）；</li>
+<li>保持总开关开启，让循环自动打即可。</li>
+<li>采集完进入<strong>数据标注</strong>：首次使用<strong>推荐"手工标注"</strong>（"AI 自动标注"是 Beta 功能）。</li>
+<li>逐张检查识别结果（共 30 张）：<strong>识别错的直接在输入框里改成正确数字；没有数字的区域改成空</strong>。</li>
+<li>⚠ 一个 ROI 白框里<strong>不能框到两个数字</strong>，否则 AI 会识别成两位数——布局有问题先回去调布局。</li>
+<li>检查完毕开始训练，<strong>训练完成后执行端会自动重启</strong>——这是正常现象。</li>
+</ol>
+<hr />
+<h2 id="_5">五、日常使用</h2>
+<h3 id="51">5.1 游戏内悬浮菜单</h3>
+<p>游戏画面左侧的竖排悬浮菜单是日常操作中心：</p>
+<table>
+<thead>
+<tr>
+<th>菜单项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>总开关</strong></td>
+<td>绿=开 / 红=关。开启后 Permes 按输出循环自动按键。<strong>建议长期保持打开</strong></td>
+</tr>
+<tr>
+<td><strong>爆发</strong></td>
+<td>爆发技能开关，团战/爆发期打开</td>
+</tr>
+<tr>
+<td><strong>自/单/群</strong></td>
+<td>模式切换：自动 / 单体 / 群体</td>
+</tr>
+<tr>
+<td><strong>设置</strong></td>
+<td>打开插件设置面板（见 5.2）</td>
+</tr>
+<tr>
+<td><strong>隐藏</strong></td>
+<td>隐藏菜单</td>
+</tr>
+<tr>
+<td><strong>校准</strong></td>
+<td>显示校准状态，点击重新校准</td>
+</tr>
+<tr>
+<td><strong>官方布局</strong></td>
+<td>一键导入官方界面布局</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52">5.2 插件设置面板（悬浮菜单 → 设置）</h3>
+<p><strong>① 设置页</strong></p>
+<ul>
+<li>总开关 / 爆发开关 / 模式切换的按键绑定（默认总开关、爆发绑定在鼠标侧键 BUTTON4/BUTTON5）</li>
+<li>复选项：自动寻怪、显示调试信息、禁用文字提示、禁用音效</li>
+<li>底部：<strong>SimC 导入</strong>（见 6.4）、恢复默认设置</li>
+</ul>
+<p><img alt="插件设置页" src="assets/guide/plugin-settings.png" /></p>
+<p><strong>② 一键导入天赋页</strong></p>
+<p>列出官方推荐天赋方案（如 1 分钟爆发轴 / 30 秒爆发轴两套），选中后点 <strong>Apply</strong> 应用。</p>
+<p><img alt="一键导入天赋" src="assets/guide/import-talents.png" /></p>
+<p><strong>③ 专属按键宏页</strong></p>
+<p>当前专精每个技能的按键绑定列表，点技能右侧的 <strong>Edit</strong> 可修改。这里的按键必须与你在游戏里的实际键位一致，Permes 才能按对技能。</p>
+<p><img alt="专属按键宏" src="assets/guide/key-macros.png" /></p>
+<p><strong>④ CVar 设置页（游戏参数优化）</strong></p>
+<ul>
+<li>延迟容限（SpellQueueWindow）：推荐 <strong>150</strong></li>
+<li>参数表逐项列出 当前值 / 目标值 / 状态，<strong>状态全绿"安全"即正常</strong></li>
+<li>直接点 <strong>设置为推荐值</strong> 一键优化即可</li>
+</ul>
+<p><img alt="CVar 设置" src="assets/guide/cvar-settings.png" /></p>
+<p><strong>⑤ 制作按键宏页</strong></p>
+<p>通用宏命令，可在聊天框直接输入生效，也可复制进游戏宏、绑定按键：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/ON</code></td>
+<td>总开关开</td>
+</tr>
+<tr>
+<td><code>/OFF</code></td>
+<td>总开关关</td>
+</tr>
+<tr>
+<td><code>/bfk</code></td>
+<td>爆发开</td>
+</tr>
+<tr>
+<td><code>/bfg</code></td>
+<td>爆发关</td>
+</tr>
+<tr>
+<td><code>/dan</code></td>
+<td>单体模式</td>
+</tr>
+<tr>
+<td><code>/qun</code></td>
+<td>群体模式</td>
+</tr>
+<tr>
+<td><code>/zi</code></td>
+<td>自动模式</td>
+</tr>
+<tr>
+<td><code>/charu</code></td>
+<td><strong>临时关闭总开关 0.5 秒</strong>（插入手动技能用）</td>
+</tr>
+</tbody>
+</table>
+<p><code>/charu</code> 典型用法——把鼠标指向类手动技能写进宏，避免和自动循环抢按键：</p>
+<p><code>/charu
+/cast [@mouseover,harm,exists]死亡之握;死亡之握</code></p>
+<p><code>/charu
+/cast [@player]反魔法领域</code></p>
+<p><img alt="宏命令列表" src="assets/guide/chat-macros.png" /></p>
+<hr />
+<h2 id="_6">六、进阶功能</h2>
+<h3 id="61-rotation-rules">6.1 输出循环（Rotation Rules）</h3>
+<p>执行端 → <strong>输出循环</strong>，左侧是"动作源"（技能→按键映射），右侧是"输出循环流水线"：</p>
+<ul>
+<li>规则<strong>从上到下按优先级执行</strong>，每条规则可附带触发条件（如"符文 ≥ 4""目标距离 ≤ 5""自身血量 ≤ 30"）。</li>
+<li><strong>普通用户：直接点"导入"选官方规则</strong>（如【官方】系列优化版），不需要自己改。</li>
+<li>会改的用户：可调整顺序、增删规则、为技能添加条件；改完点 <strong>保存到当前规则</strong>；规则支持 <strong>导入/导出</strong> 本地备份。</li>
+</ul>
+<p><img alt="输出循环编辑器" src="assets/guide/rotation-rules.png" /></p>
+<p>示例：给"灵界打击"添加条件 <code>自身血量 ≤ 30% 且 符文能量 ≥ 30</code>，即可实现低血量自动回血。</p>
+<h3 id="62">6.2 生存/治疗设置</h3>
+<p>执行端 → <strong>生存/治疗设置</strong>。<strong>所有选项默认关闭，勾选才生效</strong>：</p>
+<ul>
+<li><strong>自动打断</strong>：打断当前目标 / 打断焦点目标，可设延迟（1 loop = 500ms；建议 0.25 秒左右，模拟人工、避免秒断）</li>
+<li><strong>减伤/消耗品阈值</strong>：血量低于设定百分比自动释放（如 反魔法护罩 ≤60%、冰封之韧 ≤35%、红药水 ≤50%、治疗石 ≤30%）</li>
+<li><strong>治疗设置</strong>：按像素条血量自动焦点重伤队友（自动跳过坦克）；重伤阈值默认血量低于 20%</li>
+</ul>
+<p>改完点 <strong>保存</strong>。</p>
+<p><img alt="生存/治疗设置" src="assets/guide/survival-heal.png" /></p>
+<h3 id="63">6.3 热键设置</h3>
+<p>执行端 → <strong>热键设置</strong>：全局启动热键（默认 <code>CTRL+P</code>，启动循环+爆发）、停止热键（默认 <code>CTRL+O</code>）。</p>
+<h3 id="64-simc">6.4 SimC 模拟</h3>
+<ol>
+<li>下载 SimulationCraft（SimC）软件。</li>
+<li>游戏内插件设置面板 → 设置页 → <strong>SimC 导入</strong>。</li>
+<li>导出 SimC 字符串后，游戏内执行 <code>/reload</code> 保存到 SavedVariables。</li>
+</ol>
+<hr />
+<h2 id="hub">七、Hub 其他功能</h2>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>充值（Recharge）</strong></td>
+<td>激活码续费/加购专精，支持支付宝（主备双通道）与 PayPal</td>
+</tr>
+<tr>
+<td><strong>积分排行</strong></td>
+<td>周榜/月榜，每周一 0 点开新榜，每日 0 点结算，排名有积分奖励</td>
+</tr>
+<tr>
+<td><strong>邀请赚积分</strong></td>
+<td>生成邀请激活码发给新用户（需当前激活码剩余 ≥ 15 天；邀请码经客服审批后生效）</td>
+</tr>
+<tr>
+<td><strong>积分抽奖</strong></td>
+<td>100 积分抽一次，实物奖品需填写收货地址</td>
+</tr>
+<tr>
+<td><strong>小游戏</strong></td>
+<td>积分解锁的小游戏与"毛哥传奇"微端下载</td>
+</tr>
+<tr>
+<td><strong>修改名字</strong></td>
+<td>排行榜显示名，每 30 天只能改一次</td>
+</tr>
+<tr>
+<td><strong>AI客服小毛</strong></td>
+<td>智能问答，每小时最多 5 次提问；提问时带上完整错误提示和操作步骤，一次问清楚</td>
+</tr>
+<tr>
+<td><strong>帮助与诊断</strong></td>
+<td>知识库自助查询 + 问题反馈通道</td>
+</tr>
+<tr>
+<td><strong>优化申请</strong></td>
+<td>提交功能建议或问题，可在"我的申请记录"查看处理状态</td>
+</tr>
+<tr>
+<td><strong>按键保护 / 网吧专用</strong></td>
+<td>按键保护驱动与网吧环境专用模式</td>
+</tr>
+<tr>
+<td><strong>设置</strong></td>
+<td>界面语言（中文/English/跟随系统）等，语言切换后重启生效</td>
+</tr>
+<tr>
+<td><strong>教学视频 / 补充教学视频 / 官方网站</strong></td>
+<td>主界面底部链接，英文界面用户自动跳转 YouTube 教程</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">八、使用前环境检查清单</h2>
+<p>识别不准、循环不对，<strong>先过一遍这份清单</strong>，90% 的问题出在这里：</p>
+<ul>
+<li>[ ] <strong>游戏内渲染倍数 = 100%</strong>（选项 → 系统 → 图形）</li>
+<li>[ ] <strong>显卡控制面板的渲染比例也 = 100%</strong>（NVIDIA App/控制面板 → 程序设置 → WoW，两处必须一致）</li>
+<li>[ ] <strong>Windows 显示缩放 = 100%</strong>、分辨率为推荐值（设置 → 系统 → 屏幕）</li>
+<li>[ ] <strong>多显示器</strong>：每一块屏都检查缩放与分辨率</li>
+<li>[ ] 冷却管理器已开启，<strong>图标尺寸 ≥ 110%（推荐 120%+）</strong></li>
+<li>[ ] "追踪的增益效果"的 <strong>"未激活时隐藏"已取消勾选</strong></li>
+<li>[ ] <strong>没有任何 UI 窗口遮挡</strong>监控区域（角色面板、背包等挡住 PixelBar/冷却数字时，Permes 就"看不见"了）</li>
+<li>[ ] CVar 设置页各项状态全绿"安全"（不确定就点"设置为推荐值"）</li>
+<li>[ ] 悬浮菜单显示 <strong>校准：已完成</strong></li>
+<li>[ ] 执行端"切换模块"选的是<strong>当前角色的专精</strong></li>
+</ul>
+<hr />
+<h2 id="_8">九、故障排查</h2>
+<h3 id="91-ocr">9.1 自检：游戏状态与 OCR 核对</h3>
+<p>打开执行端主窗口，对照游戏实际状态检查两个区域：</p>
+<ul>
+<li><strong>游戏状态区</strong>：总开关、爆发、符文、符文能量、目标血量等是否与游戏一致；</li>
+<li><strong>OCR 识别区</strong>：打木桩时识别到的 Buff 层数/冷却数字是否与游戏内图标上的数字一一对应。</li>
+</ul>
+<p>哪一项对不上，问题就出在哪一项：游戏状态不对 → 校准/布局问题；OCR 数字不对 → 校准或模型问题。</p>
+<h3 id="92">9.2 重新校准标准流程</h3>
+<ol>
+<li>执行端点 <strong>停止</strong>。</li>
+<li>点悬浮菜单的 <strong>校准</strong>（或执行端"校准坐标"）。</li>
+<li>聊天框出现 <code>已导出 5 个 ROI 坐标</code> 后，<strong>执行 <code>/reload</code></strong>。</li>
+<li>确认悬浮菜单变回 <strong>校准：已完成</strong>，被移动过的监控图标拖回正确位置。</li>
+<li>点 <strong>启动</strong>，打木桩重新验证。</li>
+</ol>
+<h3 id="93">9.3 循环"卡技能"排查法</h3>
+<p>某个技能冷却好了却一直不放：</p>
+<ol>
+<li>打开 <strong>输出循环</strong>，找到该技能的规则，检查触发条件是否写错（条件永远不满足就会卡住）。</li>
+<li>验证方法（二分定位）：</li>
+<li>把疑似规则的<strong>条件全部删掉</strong>，或<strong>新加一条无条件的同名规则</strong>；</li>
+<li>如果无条件规则被疯狂连续触发 → 说明原规则的条件有问题；</li>
+<li>定位完成后<strong>删掉临时规则</strong>。</li>
+</ol>
+<h3 id="94">9.4 手动校准与模型问题</h3>
+<ol>
+<li>执行端 → <strong>高级设置</strong>（顶部红字"⚠ 不懂别动"，非排错不要动）→ <strong>手动校准</strong>。</li>
+<li><strong>手动校准后 OCR 仍然不对 = 识别模型的问题</strong> → 回到 <a href="#四ai-模型训练识别不准时必做">第四章 模型训练</a> 重新训练。</li>
+</ol>
+<p><img alt="高级设置" src="assets/guide/advanced-settings.png" /></p>
+<h3 id="95">9.5 常见错误速查</h3>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因与处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插件装了但游戏里找不到</td>
+<td>安装目录没指向 <code>_retail_</code>；插件名是随机伪装名（如 P3F8847DE），不是"Permes"</td>
+</tr>
+<tr>
+<td>进游戏插件不生效</td>
+<td>插件列表勾选"加载过期插件"并 Reload UI</td>
+</tr>
+<tr>
+<td>OCR 数字全是 <code>--</code> 或错乱</td>
+<td>先过<a href="#八使用前环境检查清单">第八章检查清单</a>，再重新校准，最后训练模型</td>
+</tr>
+<tr>
+<td>识别出两位数</td>
+<td>ROI 白框框到了两个数字，调整布局使每个监控区只含一个数字</td>
+</tr>
+<tr>
+<td>Buff 数字读不到</td>
+<td>"追踪的增益效果"勾选了"未激活时隐藏"，取消勾选</td>
+</tr>
+<tr>
+<td>图标突然全都不识别</td>
+<td>移动过冷却管理器图标 / 改过 UI 缩放，重新导入官方布局 + 重新校准</td>
+</tr>
+<tr>
+<td>训练完执行端自己重启</td>
+<td>正常现象</td>
+</tr>
+<tr>
+<td>执行端提示保持 Hub 运行</td>
+<td>Hub 被关了，重新打开 Hub</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="faq">十、常见问题 FAQ</h2>
+<p>以下整理自"帮助与诊断"知识库，按场景分类。</p>
+<h3 id="_9">激活码与授权</h3>
+<p><strong>Q：提示"机器码不匹配"？</strong><br />
+更换了电脑或主要硬件导致。联系客服核对并解绑旧设备，然后在当前设备重新输入原激活码。</p>
+<p><strong>Q：换新电脑提示"设备绑定数量已达上限"？</strong><br />
+直接在新电脑上重新激活，系统会自动解除最旧一台设备的绑定；想保留某台旧设备，先在其他设备上退出登录；仍无法激活联系客服清理旧设备。</p>
+<p><strong>Q：提示"激活码不存在 / 已被使用"？</strong><br />
+核对是否输错（多空格、字母数字混淆），确认来自官方渠道；确认无误仍提示的，联系客服核对卡密状态。</p>
+<p><strong>Q：提示"激活码已过期 / 已吊销 / 待审批 / 设备被封禁"？</strong><br />
+过期 → 在 Hub 续费或重新购买；待审批（活动/邀请赠送的卡）→ 联系客服或邀请人催审批；吊销/封禁 → 联系客服核实原因。</p>
+<p><strong>Q：Hub 未激活 / 没有活跃 License？</strong><br />
+在 Hub 重新输入激活码刷新授权，并把 Hub 更新到最新版本。</p>
+<p><strong>Q：登录状态过期 / 被登出？</strong><br />
+检查网络后重启 Hub；确认同一激活码没有在其他设备同时运行（多点登录会互踢）。</p>
+<p><strong>Q：能试用吗？</strong><br />
+试用每台设备、每个网络环境仅一次机会；当前试用功能整体暂停，请直接使用正式激活码。</p>
+<h3 id="_10">网络与更新</h3>
+<p><strong>Q：提示"签名无效 / 时间戳无效"，或所有功能突然全部报错？</strong><br />
+把 Windows 系统时间设为自动同步（设置 → 时间和语言 → 自动设置时间），关闭代理/VPN，然后重启 Hub。</p>
+<p><strong>Q：提示"无法连接服务器 / 请求超时"？</strong><br />
+确认能正常上网；关闭代理/VPN；把 Hub 加入防火墙和杀毒软件白名单后重启。提示"维护中"的等几分钟再试。</p>
+<p><strong>Q：提示"请求过于频繁"？</strong><br />
+等一分钟左右再操作；公司/网吧等共用网络环境换手机热点试试。</p>
+<p><strong>Q：下载失败 / 更新包校验不通过？</strong><br />
+直接重试让 Hub 重新获取下载链接；换网络（如手机热点）避开劫持；反复失败的，记下提示中方括号里的错误码，通过"帮助与诊断"发给客服。</p>
+<h3 id="_11">付费续费</h3>
+<p><strong>Q：无法创建支付订单？</strong><br />
+检查是否有下单未付款的订单（会占用下单额度，约 30 分钟自动过期）；已是永久授权的无需再充值；反复失败联系客服。</p>
+<p><strong>Q：付款后没到账？</strong><br />
+先在支付宝/PayPal 账单确认是否真的扣款成功。已扣款：在付款页面等系统确认，一般几分钟到账，<strong>切勿重复付款</strong>；超 30 分钟未到账，联系客服并提供订单号。未扣款：重新下单即可。</p>
+<p><strong>Q：主支付宝失败切备用通道的提示？</strong><br />
+主通道失败按页面提示改用备用支付宝；<strong>主订单已付款的回 Hub 等激活，不要再用备用通道付一次</strong>；状态无法确认时先查支付宝账单，切勿重复付款。</p>
+<p><strong>Q：PayPal 付款失败/取消？</strong><br />
+已取消或失败的回 Hub 重新下单；已付款的回 Hub 等确认，不要重复付款。</p>
+<h3 id="_12">模块与专精</h3>
+<p><strong>Q：提示"无权使用该专精"或专精灰色？</strong><br />
+未购买 → 在 Hub 加购该专精后重启 Permes；刚买过 → 重启 Hub 刷新授权。提示"模块已下架"的，更新 Permes 后重新选择模块，旧校准数据会保留。</p>
+<h3 id="_13">活动与积分</h3>
+<p><strong>Q：赛季卡抢购问题？</strong><br />
+提示人数较多立刻多点几次；售罄/未开始等下一场；提示已抢购成功无需重复操作。</p>
+<p><strong>Q：积分不足 / 抽奖解锁失败？</strong><br />
+通过邀请好友、参加活动攒积分；积分扣了但奖励没到账的联系客服。</p>
+<p><strong>Q：无法创建邀请？</strong><br />
+当前激活码剩余有效期需 ≥ 15 天，不够先续费；邀请生成的激活码需客服审批后生效。</p>
+<p><strong>Q：AI 客服使用受限？</strong><br />
+每小时最多提问 5 次，达到上限等一小时；提问带上完整错误提示和操作步骤。</p>
+<p><strong>Q：修改名字失败？</strong><br />
+排行榜名字每 30 天只能修改一次。</p>
+<hr />
+<h2 id="_14">附录</h2>
+<h3 id="_15">视频教程</h3>
+<ul>
+<li>最新版教学视频（完整流程）：B 站 <code>BV1fS786wE1i</code></li>
+<li>教学视频补充（进阶排错）：B 站 <code>BV1Jz7569E6P</code></li>
+<li>English Tutorial（YouTube）：<code>https://youtu.be/V3q6TlnII_8</code></li>
+</ul>
+<p>Hub 主界面底部有对应链接，点击可直接打开。</p>
+<h3 id="_16">向客服反馈问题时</h3>
+<ol>
+<li>记下完整的错误提示（含方括号里的错误码）。</li>
+<li>说明操作步骤与复现方式。</li>
+<li>建议录屏：可用 OBS Studio，推荐参数——录像格式 MP4、编码器 NVENC H.264、恒定 QP 20、关键帧间隔 2 秒。</li>
+</ol>
+<p><img alt="OBS 录屏推荐参数" src="assets/guide/obs-settings.png" /></p>
+<hr />
+<blockquote>
+<p>本手册由教学视频、帮助与诊断知识库整理而成。软件界面随版本更新可能略有变化，以最新版 Hub 与执行端实际界面为准。</p>
+</blockquote>
+</div>
+</body>
+</html>

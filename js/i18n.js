@@ -16,6 +16,7 @@ window.I18N = {
     "nav.modules": "职业模块",
     "nav.simc": "SimC 评估",
     "nav.faq": "常见问题",
+    "nav.guide": "使用手册",
     "nav.cta": "获取 Permes",
     "lang.switch": "English",
 
@@ -230,6 +231,7 @@ window.I18N = {
     "nav.modules": "Classes",
     "nav.simc": "SimC Eval",
     "nav.faq": "FAQ",
+    "nav.guide": "User Guide",
     "nav.cta": "Get Permes",
     "lang.switch": "简体中文",
 
