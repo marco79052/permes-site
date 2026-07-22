@@ -4,6 +4,29 @@
   publish = "."
   command = ""
 
+# 静态资源长缓存（1 年）——图标、字体、图片等不可变资源
+# 文件名变更即视为新资源，可安全设置长缓存
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML 文件短缓存，确保用户及时看到更新
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
 # 默认重定向：所有路径回退到 index.html（单页站用不到，但留作扩展）
 # [[redirects]]
 #   from = "/*"
