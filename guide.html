@@ -24,9 +24,9 @@
   }
   .topbar img { width: 26px; height: 26px; }
   .topbar .name { font-weight: 700; }
-  .topbar a.home {
-    margin-left: auto; color: var(--accent); text-decoration: none; font-size: 14px;
-  }
+  .topbar a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  .topbar .spacer { margin-left: auto; }
+  .topbar a.lang { margin-left: 16px; }
   h1 { font-size: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 12px; }
   h2 {
     font-size: 23px; margin-top: 48px; color: var(--accent);
@@ -64,7 +64,9 @@
 <div class="topbar">
   <img src="assets/img/logo.png" alt="Permes">
   <span class="name">Permes</span>
-  <a class="home" href="index.html">← 返回官网首页</a>
+  <span class="spacer"></span>
+  <a class="home" href="index.html">← Home</a>
+  <a class="lang" href="guide-en.html">English</a>
 </div>
 <div class="wrap">
 <h1 id="permes">Permes 用户使用手册</h1>

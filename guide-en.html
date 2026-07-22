@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permes User Guide</title>
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<style>
+  :root {
+    --bg: #141414; --bg-elev: #1a1a1a; --border: #2a2a2a;
+    --accent: #00ff88; --text: #ffffff; --text-mut: #a0a0a0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    line-height: 1.8;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  .topbar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--bg-elev); position: sticky; top: 0; z-index: 10;
+  }
+  .topbar img { width: 26px; height: 26px; }
+  .topbar .name { font-weight: 700; }
+  .topbar a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  .topbar .spacer { margin-left: auto; }
+  .topbar a.lang { margin-left: 16px; }
+  h1 { font-size: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 12px; }
+  h2 {
+    font-size: 23px; margin-top: 48px; color: var(--accent);
+    border-left: 4px solid var(--accent); padding-left: 12px;
+  }
+  h3 { font-size: 18px; margin-top: 32px; }
+  a { color: var(--accent); }
+  code {
+    background: #0d0d0d; border: 1px solid var(--border); border-radius: 4px;
+    padding: 1px 6px; font-size: 0.92em;
+  }
+  pre {
+    background: #0d0d0d; border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; overflow-x: auto;
+  }
+  pre code { background: none; border: none; padding: 0; }
+  table {
+    border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px;
+  }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+  th { background: var(--bg-elev); color: var(--accent); }
+  img {
+    max-width: 100%; border: 1px solid var(--border); border-radius: 8px;
+    margin: 12px 0; display: block;
+  }
+  blockquote {
+    margin: 16px 0; padding: 10px 16px; border-left: 4px solid var(--accent);
+    background: var(--bg-elev); color: var(--text-mut); border-radius: 0 8px 8px 0;
+  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <img src="assets/img/logo.png" alt="Permes">
+  <span class="name">Permes</span>
+  <span class="spacer"></span>
+  <a class="home" href="index.html">← Home</a>
+  <a class="lang" href="guide.html">简体中文</a>
+</div>
+<div class="wrap">
+<h1 id="permes-user-guide">Permes User Guide</h1>
+<blockquote>
+<p>Products: Permes Hub (launcher) + Permes Executor (in-game assistant)<br />
+Compiled from: official tutorial videos, the Help &amp; Diagnosis knowledge base, and official screenshots<br />
+Last updated: 2026-07-23</p>
+</blockquote>
+<hr />
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#1-what-is-permes">1. What is Permes</a></li>
+<li><a href="#2-quick-start-new-users">2. Quick Start (new users)</a></li>
+<li><a href="#3-first-time-in-game-setup">3. First-Time In-Game Setup</a></li>
+<li><a href="#4-ai-model-training-required-when-recognition-is-off">4. AI Model Training (required when recognition is off)</a></li>
+<li><a href="#5-daily-use">5. Daily Use</a></li>
+<li><a href="#6-advanced-features">6. Advanced Features</a></li>
+<li><a href="#7-other-hub-features">7. Other Hub Features</a></li>
+<li><a href="#8-pre-flight-environment-checklist">8. Pre-Flight Environment Checklist</a></li>
+<li><a href="#9-troubleshooting">9. Troubleshooting</a></li>
+<li><a href="#10-faq">10. FAQ</a></li>
+<li><a href="#appendix">Appendix</a></li>
+</ul>
+<hr />
+<h2 id="1-what-is-permes">1. What is Permes</h2>
+<p>Permes has two components, and <strong>both must stay running</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Permes Hub</strong></td>
+<td>Launcher &amp; manager: license activation, executor download/updates, recharge, points &amp; events, customer support</td>
+</tr>
+<tr>
+<td><strong>Permes Executor</strong></td>
+<td>The worker: reads the game screen (OCR + pixel recognition) and sends keys according to the rotation rules</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠ <strong>Keep Permes Hub running while in use</strong> (a persistent banner on the executor window says the same). Closing the Hub stops the executor.</p>
+</blockquote>
+<p><img alt="Hub main window and executor console" src="assets/guide/hub-main.png" /></p>
+<p><em>Left: Permes Hub main window (Launch Permes, Recharge, Settings, Points Ranking, Invite &amp; Earn, Points Lottery, Mini Games). Right: Permes Executor console (Start/Stop and the Install Addon / Calibrate / Train Model / Rotation Rules / Survival/Heal Settings / Switch Module / SimC Sim tabs).</em></p>
+<hr />
+<h2 id="2-quick-start-new-users">2. Quick Start (new users)</h2>
+<p>Full flow: <strong>install Hub → activate → launch the executor → install the in-game addon → in-game setup → calibrate → (optional) model training → fight</strong>.</p>
+<h3 id="21-install-permes-hub">2.1 Install Permes Hub</h3>
+<ol>
+<li>Run the installer <code>PermesHub_Setup.exe</code>.</li>
+<li>The wizard notes: <strong>the install path and program name are automatically disguised — no manual setup needed</strong>. This is intentional, not malware.</li>
+<li>Pick a drive, optionally check "Create desktop shortcut" / "Run at startup" / "Run after install", then click <strong>Install</strong>.</li>
+</ol>
+<h3 id="22-activate-sign-in">2.2 Activate &amp; Sign In</h3>
+<ol>
+<li>Open the Hub and enter your purchased <strong>license key</strong>.</li>
+<li>Once activated, the Hub shows your modules, expiry date (or "Lifetime access"), and points balance.</li>
+<li>The key is bound to your device. Changing computers requires unbinding (see <a href="#10-faq">FAQ</a>).</li>
+</ol>
+<h3 id="23-launch-the-permes-executor">2.3 Launch the Permes Executor</h3>
+<ol>
+<li>Click the big green <strong>Launch Permes</strong> button in the Hub.</li>
+<li>On first launch the executor <strong>downloads automatically</strong> — wait for the progress bar.</li>
+<li>The executor console appears with a row of function tabs:<br />
+<strong>Install Addon | Calibrate | Train Model | Rotation Rules | Survival/Heal Settings | Switch Module | (Hotkeys) | SimC Sim</strong>.</li>
+</ol>
+<blockquote>
+<p>If you use a Logitech mouse, the Hub's <strong>GHUB Key Protection</strong> button opens Logitech G HUB to work with key protection.</p>
+</blockquote>
+<h3 id="24-install-the-in-game-addon">2.4 Install the In-Game Addon</h3>
+<ol>
+<li>In the executor, click <strong>Install Addon</strong> — the "Select Classes to Install" dialog appears.</li>
+<li><strong>Make sure the target directory points to the retail <code>_retail_</code> folder</strong> (e.g. <code>D:\World of Warcraft\_retail_</code>) — this is the most common mistake; the addon won't work in the wrong folder.</li>
+<li>Check the classes you play (all checked by default), then click <strong>OK</strong>.</li>
+</ol>
+<p><img alt="Select Classes to Install" src="assets/guide/install-classes.png" /></p>
+<blockquote>
+<p>After installation the addon shows up in the in-game AddOn list under a randomized name (e.g. <strong>P3F8847DE</strong>). This disguise is intentional — <strong>not finding anything called "Permes" is normal</strong>.</p>
+</blockquote>
+<h3 id="25-switch-module-choose-class-spec">2.5 Switch Module (choose class &amp; spec)</h3>
+<p><strong>The first thing to do after entering the game</strong>: click <strong>Switch Module</strong> in the executor, pick your current character's <strong>class + spec</strong>, then OK.</p>
+<blockquote>
+<p>⚠ Pick the spec of the character you are actually playing. The wrong spec means wrong rotation, wrong keybinds, and wrong recognition regions.</p>
+</blockquote>
+<p><img alt="Switch Module" src="assets/guide/switch-module.png" /></p>
+<hr />
+<h2 id="3-first-time-in-game-setup">3. First-Time In-Game Setup</h2>
+<h3 id="31-enable-the-addon">3.1 Enable the Addon</h3>
+<ol>
+<li>Press <strong>ESC</strong> → <strong>AddOns</strong>.</li>
+<li>Check <strong>Load out of date AddOns</strong> at the top.</li>
+<li>Make sure the Permes addon (random name, e.g. P3F8847DE) is checked; if anything shows red "Requires Reload", click <strong>Reload UI</strong>.</li>
+</ol>
+<p><img alt="Game Menu → AddOns" src="assets/guide/enable-addon-menu.png" /><br />
+<img alt="AddOn List" src="assets/guide/enable-addon-list.png" /></p>
+<h3 id="32-set-up-the-cooldown-manager">3.2 Set Up the Cooldown Manager</h3>
+<p>Permes reads ability cooldowns and buff stacks through the game's built-in <strong>Cooldown Manager</strong>, which must be configured correctly:</p>
+<ol>
+<li>Press ESC → <strong>Edit Mode</strong>, and enable the <strong>Cooldown Manager</strong> frames.</li>
+<li>Select the <strong>Essential Cooldowns</strong> frame; recommended settings:</li>
+<li>Orientation: Horizontal; Icon Direction: Right</li>
+<li><strong>Icon Size ≥ 110% (120%+ recommended)</strong> — icons that are too small can't be recognized</li>
+<li>Visibility: Always Visible; check Show Timer / Show Tooltips</li>
+<li>Select the <strong>Tracked Buffs</strong> frame with the same settings, plus:</li>
+<li>⚠ <strong>"Hide When Inactive" must be UNCHECKED</strong>, otherwise Permes cannot read the buff numbers.</li>
+</ol>
+<p><img alt="Tracked Buffs settings" src="assets/guide/hud-tracked-buffs.png" /><br />
+<img alt="Essential Cooldowns settings" src="assets/guide/hud-essential-cds.png" /></p>
+<h3 id="33-import-the-official-layout">3.3 Import the Official Layout</h3>
+<p>If your Cooldown Manager layout doesn't match the official requirement (a banner appears saying required abilities are missing):</p>
+<ol>
+<li><strong>Don't rearrange the frames by hand</strong> — click <strong>Official Layout</strong> on the Permes dock (or "Import official layout" on the banner).</li>
+<li>The game reloads the UI automatically.</li>
+<li>⚠ After importing, <strong>do not move the icons Permes reads</strong> — pixel recognition samples fixed positions; moving them breaks recognition.</li>
+</ol>
+<h3 id="34-calibrate">3.4 Calibrate</h3>
+<p>Calibration tells the executor where each number sits on your screen:</p>
+<ol>
+<li>Click <strong>Calibrate</strong> in the executor (or "Calibrate" on the dock).</li>
+<li>The chat log prints: <code>5 ROI coordinates exported, please /reload</code>.</li>
+<li><strong>Type <code>/reload</code> in chat</strong> — calibration only takes effect after a reload.</li>
+<li>The dock status changes from "Calibrate: NotDone" to <strong>Done</strong> — success.</li>
+</ol>
+<p><img alt="Dock menu (red NotDone = not calibrated)" src="assets/guide/dock-menu.png" /></p>
+<p><strong>Verify calibration:</strong></p>
+<ol>
+<li>Click <strong>▶ Start</strong> in the executor and hit a training dummy.</li>
+<li>Watch the executor's <strong>OCR Recognition</strong> values (e.g. wound stacks, ability stacks) — they should match the numbers on the in-game buff icons in real time.</li>
+<li>Match = calibrated. Mismatch = go to <a href="#9-troubleshooting">9. Troubleshooting</a>.</li>
+</ol>
+<hr />
+<h2 id="4-ai-model-training-required-when-recognition-is-off">4. AI Model Training (required when recognition is off)</h2>
+<p>Permes' number-recognition model is <strong>trained and runs locally</strong>. You must train your own model when:</p>
+<ul>
+<li>Using Permes for the first time (your resolution / DPI / UI scale differs from the default environment)</li>
+<li>After changing PC, monitor, resolution, or in-game UI scale</li>
+<li>Calibration succeeded but OCR numbers are still wrong</li>
+</ul>
+<h3 id="training-steps">Training steps</h3>
+<ol>
+<li>Click <strong>Train Model</strong> in the executor.</li>
+<li>If told an existing fine-tuned model was found:</li>
+<li>Never trained before → choose <strong>full manual retrain</strong></li>
+<li>Have a model and want to improve it → choose <strong>auto/manual incremental training</strong></li>
+<li><strong>Auto capture</strong> begins: the program screenshots every 2 seconds, 30 shots total. During capture:</li>
+<li>Stay at a <strong>training dummy</strong> and keep fighting;</li>
+<li><strong>Make sure the Cooldown Manager icons and buff numbers keep changing</strong> (those numbers are the training data);</li>
+<li>Keep the Master switch on so the rotation fights for you.</li>
+<li>After capture comes <strong>data labeling</strong>: for first-time use, <strong>manual annotation is recommended</strong> ("AI auto annotation" is Beta).</li>
+<li>Review each of the 30 shots: <strong>fix wrong values directly in the input box; leave regions with no number empty</strong>.</li>
+<li>⚠ One ROI box must <strong>never cover two numbers</strong> — the AI would read them as a two-digit number. Fix the layout first if that happens.</li>
+<li>Training then starts, and <strong>the executor restarts automatically when done</strong> — this is normal.</li>
+</ol>
+<hr />
+<h2 id="5-daily-use">5. Daily Use</h2>
+<h3 id="51-the-in-game-dock">5.1 The In-Game Dock</h3>
+<p>The vertical floating menu on the left of the game screen is your daily control center:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Master</strong></td>
+<td>Green = on / red = off. Permes sends keys per the rotation while on. <strong>Keep it on</strong></td>
+</tr>
+<tr>
+<td><strong>Burst</strong></td>
+<td>Burst ability switch — on during burst phases</td>
+</tr>
+<tr>
+<td><strong>Mode</strong></td>
+<td>Auto / Single-target / AoE</td>
+</tr>
+<tr>
+<td><strong>Settings</strong></td>
+<td>Opens the addon settings panel (see 5.2)</td>
+</tr>
+<tr>
+<td><strong>Hidden</strong></td>
+<td>Hides the dock</td>
+</tr>
+<tr>
+<td><strong>Calibrate</strong></td>
+<td>Shows calibration status; click to recalibrate</td>
+</tr>
+<tr>
+<td><strong>Official Layout</strong></td>
+<td>One-click import of the official UI layout</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-addon-settings-panel-dock-settings">5.2 Addon Settings Panel (dock → Settings)</h3>
+<p><strong>① Settings tab</strong></p>
+<ul>
+<li>Keybinds for Master / Burst / Mode toggle (Master and Burst default to mouse side buttons BUTTON4/BUTTON5)</li>
+<li>Checkboxes: Auto target, Debug info, Disable text, Disable sound</li>
+<li>Bottom: <strong>SimC Import</strong> (see 6.4), Reset</li>
+</ul>
+<p><img alt="Settings tab" src="assets/guide/plugin-settings.png" /></p>
+<p><strong>② Import Talents tab</strong></p>
+<p>Lists official talent builds (e.g. a 1-minute burst build and a 30-second burst build). Select one and click <strong>Apply</strong>.</p>
+<p><img alt="Import Talents" src="assets/guide/import-talents.png" /></p>
+<p><strong>③ Dedicated Key Macros tab</strong></p>
+<p>Every ability of the current spec with its keybind; click <strong>Edit</strong> next to an ability to change it. These keybinds must match your actual in-game keybinds for Permes to press the right keys.</p>
+<p><img alt="Dedicated Key Macros" src="assets/guide/key-macros.png" /></p>
+<p><strong>④ CVarSettings tab (game parameter optimization)</strong></p>
+<ul>
+<li>SpellQueueWindow: recommended <strong>150</strong></li>
+<li>The parameter table shows Current / Target / Status per row — <strong>all green "Safe" means OK</strong></li>
+<li>Just click <strong>Apply Recommended Settings</strong> for a one-click fix</li>
+</ul>
+<p><img alt="CVar Settings" src="assets/guide/cvar-settings-en.png" /></p>
+<p><strong>⑤ Create Key Macros tab</strong></p>
+<p>General macro commands — type them in chat to apply, or copy them into an in-game macro and bind to a key:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/ON</code></td>
+<td>Master switch on</td>
+</tr>
+<tr>
+<td><code>/OFF</code></td>
+<td>Master switch off</td>
+</tr>
+<tr>
+<td><code>/bfk</code></td>
+<td>Burst on</td>
+</tr>
+<tr>
+<td><code>/bfg</code></td>
+<td>Burst off</td>
+</tr>
+<tr>
+<td><code>/dan</code></td>
+<td>Single-target mode</td>
+</tr>
+<tr>
+<td><code>/qun</code></td>
+<td>AoE mode</td>
+</tr>
+<tr>
+<td><code>/zi</code></td>
+<td>Auto mode</td>
+</tr>
+<tr>
+<td><code>/charu</code></td>
+<td><strong>Temporarily disables Master for 0.5s</strong> (for weaving in manual abilities)</td>
+</tr>
+</tbody>
+</table>
+<p>Typical <code>/charu</code> usage — weave mouseover manual abilities into a macro so they don't fight the auto rotation:</p>
+<p><code>/charu
+/cast [@mouseover,harm,exists]Death Grip;Death Grip</code></p>
+<p><code>/charu
+/cast [@player]Anti-Magic Zone</code></p>
+<p><img alt="Macro command list" src="assets/guide/chat-macros.png" /></p>
+<hr />
+<h2 id="6-advanced-features">6. Advanced Features</h2>
+<h3 id="61-rotation-rules">6.1 Rotation Rules</h3>
+<p>Executor → <strong>Rotation Rules</strong>: the left side lists action sources (ability → keybind), the right side is the rotation pipeline:</p>
+<ul>
+<li>Rules execute <strong>top-down by priority</strong>; each rule can carry conditions (e.g. "runes ≥ 4", "target distance ≤ 5", "own HP ≤ 30").</li>
+<li><strong>Regular users: just click "Import" and pick an official rule set</strong> — no editing needed.</li>
+<li>Advanced users: reorder, add/remove rules, attach conditions; click <strong>Save to current rule</strong> when done; rules support <strong>import/export</strong> for local backup.</li>
+</ul>
+<p><img alt="Rotation rules editor" src="assets/guide/rotation-rules.png" /></p>
+<p>Example: adding the condition <code>own HP ≤ 30% and runic power ≥ 30</code> to Death Strike gives you automatic low-HP healing.</p>
+<h3 id="62-survival-healing-settings">6.2 Survival / Healing Settings</h3>
+<p>Executor → <strong>Survival/Heal Settings</strong>. <strong>Everything is off by default; options only take effect when checked</strong>:</p>
+<ul>
+<li><strong>Auto interrupt</strong>: interrupt current target / focus target, with configurable delay (1 loop = 500ms; ~0.25s recommended to look human and avoid instant interrupts)</li>
+<li><strong>Defensive/consumable thresholds</strong>: cast automatically when HP drops below the set percentage (e.g. Anti-Magic Shell ≤60%, Icebound Fortitude ≤35%, HP pot ≤50%, Healthstone ≤30%)</li>
+<li><strong>Healing settings</strong>: automatically focus critically injured party members via Pixel Bar health (tanks are auto-skipped); critical threshold defaults to HP below 20%</li>
+</ul>
+<p>Click <strong>Save</strong> when done.</p>
+<p><img alt="Survival / Healing Settings" src="assets/guide/survival-heal.png" /></p>
+<h3 id="63-hotkeys">6.3 Hotkeys</h3>
+<p>Executor → hotkey settings: global start hotkey (default <code>CTRL+P</code>, starts rotation + burst) and stop hotkey (default <code>CTRL+O</code>).</p>
+<h3 id="64-simc">6.4 SimC</h3>
+<ol>
+<li>Download SimulationCraft (SimC).</li>
+<li>In the addon settings panel → Settings tab → <strong>SimC Import</strong>.</li>
+<li>After exporting the SimC string, run <code>/reload</code> in-game to save it to SavedVariables.</li>
+</ol>
+<hr />
+<h2 id="7-other-hub-features">7. Other Hub Features</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recharge</strong></td>
+<td>Renew your license or add specs; Alipay (primary + backup) and PayPal supported</td>
+</tr>
+<tr>
+<td><strong>Points Ranking</strong></td>
+<td>Weekly/monthly leaderboards; new board every Monday 00:00 (Beijing time), daily settlement with point rewards</td>
+</tr>
+<tr>
+<td><strong>Invite &amp; Earn</strong></td>
+<td>Generate invite keys for new users (requires ≥ 15 days remaining on your key; invite keys activate after support approval)</td>
+</tr>
+<tr>
+<td><strong>Points Lottery</strong></td>
+<td>100 points per draw; physical prizes require a shipping address</td>
+</tr>
+<tr>
+<td><strong>Mini Games</strong></td>
+<td>Point-unlocked mini games and the MaoGe Legend lite client</td>
+</tr>
+<tr>
+<td><strong>Edit Name</strong></td>
+<td>Leaderboard display name, changeable once every 30 days</td>
+</tr>
+<tr>
+<td><strong>AI Support</strong></td>
+<td>Smart Q&amp;A, up to 5 questions per hour; include the full error message and your steps in one question</td>
+</tr>
+<tr>
+<td><strong>Help &amp; Diagnosis</strong></td>
+<td>Self-service knowledge base + feedback channel</td>
+</tr>
+<tr>
+<td><strong>Feedback</strong></td>
+<td>Submit suggestions or issues; track status in "My requests"</td>
+</tr>
+<tr>
+<td><strong>Key Protection / Internet Cafe</strong></td>
+<td>Key-protection driver and a mode for internet-cafe environments</td>
+</tr>
+<tr>
+<td><strong>Settings</strong></td>
+<td>UI language (中文 / English / follow system); a restart applies the change</td>
+</tr>
+<tr>
+<td><strong>Tutorial / Extra Tutorials / Official Website</strong></td>
+<td>Links at the bottom of the main window</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-pre-flight-environment-checklist">8. Pre-Flight Environment Checklist</h2>
+<p>Wrong recognition or a broken rotation? <strong>Run through this list first</strong> — 90% of issues live here:</p>
+<ul>
+<li>[ ] <strong>In-game render scale = 100%</strong> (Options → System → Graphics)</li>
+<li>[ ] <strong>GPU control panel render scale also = 100%</strong> (NVIDIA app → program settings → WoW — both places must agree)</li>
+<li>[ ] <strong>Windows display scaling = 100%</strong>, resolution at the recommended value (Settings → System → Display)</li>
+<li>[ ] <strong>Multi-monitor</strong>: check scaling and resolution on every screen</li>
+<li>[ ] Cooldown Manager enabled, <strong>icon size ≥ 110% (120%+ recommended)</strong></li>
+<li>[ ] <strong>"Hide When Inactive" unchecked</strong> on Tracked Buffs</li>
+<li>[ ] <strong>No UI windows covering</strong> the monitored areas (character pane, bags, etc. — Permes can't "see" covered pixels)</li>
+<li>[ ] CVarSettings all green "Safe" (when in doubt, click "Apply Recommended Settings")</li>
+<li>[ ] Dock shows <strong>Calibrate: Done</strong></li>
+<li>[ ] Switch Module matches your <strong>current character's spec</strong></li>
+</ul>
+<hr />
+<h2 id="9-troubleshooting">9. Troubleshooting</h2>
+<h3 id="91-self-check-game-status-vs-ocr">9.1 Self-Check: Game Status vs OCR</h3>
+<p>Open the executor window and compare two areas with the actual game state:</p>
+<ul>
+<li><strong>Game Status</strong>: Master, Burst, runes, runic power, target HP, etc. — do they match the game?</li>
+<li><strong>OCR Recognition</strong>: while hitting a dummy, do the recognized buff stacks/cooldown numbers match the in-game icons one by one?</li>
+</ul>
+<p>Whichever area mismatches tells you where the problem is: Game Status wrong → calibration/layout issue; OCR numbers wrong → calibration or model issue.</p>
+<h3 id="92-standard-recalibration">9.2 Standard Recalibration</h3>
+<ol>
+<li>Click <strong>Stop</strong> in the executor.</li>
+<li>Click <strong>Calibrate</strong> on the dock (or in the executor).</li>
+<li>When the chat log shows <code>5 ROI coordinates exported</code>, <strong>run <code>/reload</code></strong>.</li>
+<li>Confirm the dock shows <strong>Calibrate: Done</strong> again, and drag any moved tracking icons back into place.</li>
+<li>Click <strong>Start</strong> and re-verify on a dummy.</li>
+</ol>
+<h3 id="93-stuck-ability-diagnosis">9.3 "Stuck Ability" Diagnosis</h3>
+<p>An ability is off cooldown but never fires:</p>
+<ol>
+<li>Open <strong>Rotation Rules</strong>, find that ability's rule, and check whether its conditions are miswritten (a condition that is never true stalls the rule).</li>
+<li>Verification (bisect):</li>
+<li><strong>Delete all conditions</strong> from the suspect rule, or <strong>add an unconditional copy</strong> of it;</li>
+<li>If the unconditional rule fires non-stop → the original rule's conditions are the problem;</li>
+<li><strong>Delete the temporary rule</strong> when done.</li>
+</ol>
+<h3 id="94-manual-calibration-model-issues">9.4 Manual Calibration &amp; Model Issues</h3>
+<ol>
+<li>Executor → <strong>Advanced Settings</strong> (red banner "⚠ Don't touch if unsure") → <strong>Manual Calibration</strong>.</li>
+<li><strong>If OCR is still wrong after manual calibration, it's a model problem</strong> → go back to <a href="#4-ai-model-training-required-when-recognition-is-off">4. AI Model Training</a>.</li>
+</ol>
+<p><img alt="Advanced Settings" src="assets/guide/advanced-settings.png" /></p>
+<h3 id="95-common-errors-quick-reference">9.5 Common Errors Quick Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause &amp; fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addon installed but invisible in-game</td>
+<td>Install directory didn't point to <code>_retail_</code>; the addon uses a random disguised name (e.g. P3F8847DE), not "Permes"</td>
+</tr>
+<tr>
+<td>Addon inactive after entering game</td>
+<td>Check "Load out of date AddOns" in the AddOn list and Reload UI</td>
+</tr>
+<tr>
+<td>OCR shows <code>--</code> or garbage</td>
+<td>Run the <a href="#8-pre-flight-environment-checklist">checklist</a>, then recalibrate, then retrain the model</td>
+</tr>
+<tr>
+<td>Two-digit misreads</td>
+<td>An ROI box covers two numbers — fix the layout so each tracked region holds exactly one number</td>
+</tr>
+<tr>
+<td>Buff numbers unreadable</td>
+<td>"Hide When Inactive" is checked on Tracked Buffs — uncheck it</td>
+</tr>
+<tr>
+<td>Everything suddenly unrecognized</td>
+<td>Cooldown icons were moved or UI scale changed — re-import the official layout and recalibrate</td>
+</tr>
+<tr>
+<td>Executor restarts after training</td>
+<td>Normal behavior</td>
+</tr>
+<tr>
+<td>Executor warns to keep Hub running</td>
+<td>The Hub was closed — reopen it</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-faq">10. FAQ</h2>
+<p>Compiled from the Help &amp; Diagnosis knowledge base, grouped by scenario.</p>
+<h3 id="license-activation">License &amp; Activation</h3>
+<p><strong>Q: "Machine ID mismatch"?</strong><br />
+Caused by changing computers or major hardware. Contact support to verify and unbind the old device, then re-enter your original key on the current one.</p>
+<p><strong>Q: "Device binding limit reached" on a new PC?</strong><br />
+Just activate on the new computer — the oldest device is unbound automatically. To keep a specific old device, sign out on the others first. Still failing? Ask support to clear old devices.</p>
+<p><strong>Q: "License key not found / already used"?</strong><br />
+Check for typos (extra spaces, mixed-up letters/digits) and make sure the key came from an official channel. If it's still reported missing, contact support to check the key status.</p>
+<p><strong>Q: "Expired / revoked / pending approval / device banned"?</strong><br />
+Expired → renew in the Hub or buy a new key. Pending approval (promo/referral keys) → ask support or your inviter to speed it up. Revoked/banned → contact support for the reason.</p>
+<p><strong>Q: Hub not activated / no active license?</strong><br />
+Re-enter your key in the Hub to refresh, and update the Hub to the latest version.</p>
+<p><strong>Q: Session expired / signed out?</strong><br />
+Check the network and restart the Hub; make sure the same key isn't running on another device (multi-login kicks you out).</p>
+<p><strong>Q: Is there a trial?</strong><br />
+One trial per device and per network; the trial program is currently paused — please use a full license key.</p>
+<h3 id="network-updates">Network &amp; Updates</h3>
+<p><strong>Q: "Invalid signature/timestamp", or everything fails at once?</strong><br />
+Set Windows time to sync automatically (Settings → Time &amp; language), turn off any proxy/VPN, then restart the Hub.</p>
+<p><strong>Q: "Cannot connect to server / request timed out"?</strong><br />
+Confirm you can browse the web; disable proxy/VPN; whitelist the Hub in firewall/antivirus and restart. "Under maintenance" → retry in a few minutes.</p>
+<p><strong>Q: "Too many requests"?</strong><br />
+Wait about a minute; on shared networks (office/internet cafe), switch to a mobile hotspot.</p>
+<p><strong>Q: Download failed / package verification failed?</strong><br />
+Retry so the Hub fetches a fresh link; switch networks (e.g. hotspot) to avoid hijacking; if verification keeps failing, note the error code in brackets and send it via Help &amp; Diagnosis.</p>
+<h3 id="payment">Payment</h3>
+<p><strong>Q: Cannot create a payment order?</strong><br />
+Check for unpaid pending orders (they occupy your order quota and expire in ~30 minutes); lifetime keys don't need renewal; repeated failures → contact support.</p>
+<p><strong>Q: Paid but nothing arrived?</strong><br />
+First confirm the charge in your Alipay/PayPal bill. Charged → wait on the payment page for confirmation, usually a few minutes — <strong>do not pay again</strong>; over 30 minutes → contact support with your order number. Not charged → simply reorder.</p>
+<p><strong>Q: Primary Alipay failed, backup channel prompts?</strong><br />
+If the primary channel fails, follow the page prompt to use backup Alipay. <strong>If the primary order is already paid, go back to the Hub and wait — do not pay again via backup.</strong> If the status can't be confirmed, check your bill first and never pay twice.</p>
+<p><strong>Q: PayPal failed/cancelled?</strong><br />
+Cancelled or failed → reorder in the Hub. Paid → wait for confirmation in the Hub, don't pay again.</p>
+<h3 id="modules-specs">Modules &amp; Specs</h3>
+<p><strong>Q: "No permission for this spec" or spec greyed out?</strong><br />
+Not purchased → add the spec in the Hub and restart Permes. Just purchased → restart the Hub to refresh permissions. "Module retired" → update Permes and pick another module; old calibration data is kept.</p>
+<h3 id="events-points">Events &amp; Points</h3>
+<p><strong>Q: Season card flash sale issues?</strong><br />
+"Busy" → retry immediately a few times; sold out/not started → wait for the next sale; "already secured" → no further action needed.</p>
+<p><strong>Q: Insufficient points / unlock failed?</strong><br />
+Earn points via referrals and events; if points were deducted but the reward didn't arrive, contact support.</p>
+<p><strong>Q: Cannot create a referral?</strong><br />
+Your key needs ≥ 15 days remaining — renew first. Invite keys only work after support approval.</p>
+<p><strong>Q: AI Support limited?</strong><br />
+Up to 5 questions per hour — wait an hour if you hit the cap; include the full error message and steps in one question.</p>
+<p><strong>Q: Name change failed?</strong><br />
+The leaderboard name can only be changed once every 30 days.</p>
+<hr />
+<h2 id="appendix">Appendix</h2>
+<h3 id="video-tutorials">Video Tutorials</h3>
+<ul>
+<li>Full walkthrough (Chinese): Bilibili <code>BV1fS786wE1i</code></li>
+<li>Advanced troubleshooting (Chinese): Bilibili <code>BV1Jz7569E6P</code></li>
+<li>English Tutorial: <code>https://youtu.be/V3q6TlnII_8</code></li>
+</ul>
+<p>The links at the bottom of the Hub main window open these directly.</p>
+<h3 id="when-reporting-an-issue-to-support">When Reporting an Issue to Support</h3>
+<ol>
+<li>Note the full error message (including the error code in brackets).</li>
+<li>Describe your steps and how to reproduce it.</li>
+<li>Screen recording recommended: OBS Studio with MP4, NVENC H.264, constant QP 20, keyframe interval 2s.</li>
+</ol>
+<p><img alt="Recommended OBS settings" src="assets/guide/obs-settings.png" /></p>
+<hr />
+<blockquote>
+<p>This guide is compiled from tutorial videos and the Help &amp; Diagnosis knowledge base. UI details may change slightly between versions — the latest Hub and executor UI prevails.</p>
+</blockquote>
+</div>
+</body>
+</html>

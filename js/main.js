@@ -41,6 +41,11 @@
       toggleText.textContent = lang === 'zh' ? 'English' : '简体中文';
     }
 
+    // 使用手册链接按语言指向对应页面
+    document.querySelectorAll('a[data-i18n="nav.guide"]').forEach(function (el) {
+      el.href = lang === 'zh' ? 'guide.html' : 'guide-en.html';
+    });
+
     // 更新 title 和 meta description
     if (lang === 'en') {
       document.title = 'Permes · AI-Powered WoW Combat Assistant';
