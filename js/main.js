@@ -395,7 +395,47 @@
     }, 3000);
   }
 
+  // ============ 访问统计埋点 ============
+  var TRACK_URL = 'https://permes.xin/api/v1/analytics/track';
+  function track(type, name) {
+    try {
+      var data = JSON.stringify({ site: 'netlify', type: type, name: name, t: Date.now() });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(TRACK_URL, data);
+      } else {
+        new Image().src = TRACK_URL + '?site=netlify&type=' + encodeURIComponent(type) + '&name=' + encodeURIComponent(name) + '&t=' + Date.now();
+      }
+    } catch (e) {}
+  }
+
+  // 按钮类名 -> 按钮标识映射
+  var BTN_MAP = {
+    'btn-primary': 'download',
+    'btn-discord': 'discord',
+    'btn-douyin': 'douyin',
+    'btn-bilibili': 'bilibili',
+    'btn-wechat': 'wechat'
+  };
+
+  // 事件委托：监听 hero-cta 和 cta-box 内的按钮点击
+  function bindClickTracking() {
+    document.querySelectorAll('.hero-cta, .cta-box').forEach(function (container) {
+      container.addEventListener('click', function (e) {
+        var btn = e.target.closest('.btn');
+        if (!btn) return;
+        for (var cls in BTN_MAP) {
+          if (btn.classList.contains(cls)) {
+            track('click', BTN_MAP[cls]);
+            break;
+          }
+        }
+      });
+    });
+  }
+
   // ============ 初始化 ============
   applyLang(getLang());
   handleScroll();
+  track('pv', location.pathname);
+  bindClickTracking();
 })();
