@@ -16,7 +16,6 @@ window.I18N = {
     "nav.modules": "职业模块",
     "nav.simc": "SimC 评估",
     "nav.faq": "常见问题",
-    "nav.guide": "使用手册",
     "nav.cta": "获取 Permes",
     "lang.switch": "English",
 
@@ -83,8 +82,8 @@ window.I18N = {
     "feat.f3.desc": "自动打断施法（不断钢条）、自动焦点打断、按血量阈值自动减伤释放防御技能、顺滑插入技能。坦克与治疗专精完整支持。",
     "feat.f4.title": "🛡️ 12.0 全面适配",
     "feat.f4.desc": "WoW 12.0 对 buff、debuff、技能冷却、充能、战斗状态、副本环境全面封禁 API 并严控 taint。Permes 对 taint 做了全面处理，多技术协同绕过，12.0 依然稳定运行。",
-    "feat.f5.title": "🎯 一键校准",
-    "feat.f5.desc": "游戏内一键校准，自动检测对齐 OCR 区域，调试过程压缩到 1 分钟，零专业知识门槛。",
+    "feat.f5.title": "🎯 零学习即用",
+    "feat.f5.desc": "全新重构引擎，打开即用，无需校准、无需学习。完全自动识别屏幕状态，零配置零门槛。",
     "feat.f6.title": "🌐 中英双语",
     "feat.f6.desc": "中文客户端走短路逻辑，零感知；英文环境自动翻译 UI 与宏，单一真相源，原生双语体验。",
 
@@ -109,16 +108,16 @@ window.I18N = {
     "ocr.p1.desc": "对 12.0 的 taint 限制做全面处理，多技术协同绕过，确保状态信息在战斗与副本环境中稳定可读。",
     "ocr.p2.title": "② 窄域识别引擎",
     "ocr.p2.desc": "针对 WoW UI 数字窄域训练，仅识别 0-9。模型不足 1MB，单次推理 <5ms，CPU 即可实时运行。",
-    "ocr.p3.title": "③ 一键自动校准",
-    "ocr.p3.desc": "游戏内一键校准，自动检测对齐 OCR 区域，调试过程压缩到 1 分钟，零专业知识门槛。",
+    "ocr.p3.title": "③ 零配置即用",
+    "ocr.p3.desc": "全新重构引擎，打开即用，无需校准、无需学习。完全自动识别屏幕状态，零配置零门槛。",
     "ocr.th.model": "组件",
     "ocr.th.note": "说明",
     "ocr.r1.model": "taint 处理",
     "ocr.r1.note": "12.0 全面适配，多技术协同绕过",
     "ocr.r2.model": "窄域识别",
     "ocr.r2.note": "0-9 识别，<1MB，<5ms",
-    "ocr.r3.model": "自动校准",
-    "ocr.r3.note": "一键校准，1 分钟搞定",
+    "ocr.r3.model": "零配置",
+    "ocr.r3.note": "打开即用，无需校准",
 
     // ---- 职业模块 ----
     "mod.eyebrow": "CLASS MODULES",
@@ -188,7 +187,7 @@ window.I18N = {
     "start.1.t": "启动 Hub",
     "start.2.t": "自动安装插件",
     "start.3.t": "选择职业模块",
-    "start.4.t": "一键校准",
+    "start.4.t": "打开即用",
     "start.5.t": "启动循环",
 
     // ---- FAQ ----
@@ -231,7 +230,6 @@ window.I18N = {
     "nav.modules": "Classes",
     "nav.simc": "SimC Eval",
     "nav.faq": "FAQ",
-    "nav.guide": "User Guide",
     "nav.cta": "Get Permes",
     "lang.switch": "简体中文",
 
@@ -298,8 +296,8 @@ window.I18N = {
     "feat.f3.desc": "Auto interrupt casting (non-interruptible casts skipped), auto focus-target interrupt, auto mitigation by health threshold, smooth ability weaving. Tank and healer specs fully supported.",
     "feat.f4.title": "🛡️ Full 12.0 adaptation",
     "feat.f4.desc": "WoW 12.0 fully bans APIs for buffs, debuffs, cooldowns, charges, combat state, and instance environments, with strict taint control. Permes handles taint comprehensively and bypasses via multi-technology synergy - stable on 12.0.",
-    "feat.f5.title": "🎯 One-click calibration",
-    "feat.f5.desc": "One-click in-game calibration auto-detects and aligns OCR regions. The debugging process is compressed to 1 minute - zero professional knowledge required.",
+    "feat.f5.title": "🎯 Zero Learning",
+    "feat.f5.desc": "Fully rebuilt engine - just open and use. No calibration, no learning required. Fully automatic screen state recognition, zero config zero barrier.",
     "feat.f6.title": "🌐 Bilingual (ZH/EN)",
     "feat.f6.desc": "Chinese clients take a zero-touch short-circuit; English locales auto-translate UI and macros from a single source of truth. Native bilingual experience.",
 
@@ -324,16 +322,16 @@ window.I18N = {
     "ocr.p1.desc": "Comprehensive handling of 12.0 taint restrictions, bypassed via multi-technology synergy, ensuring state information remains stably readable in combat and instance environments.",
     "ocr.p2.title": "② Narrow-domain recognition",
     "ocr.p2.desc": "Trained for the narrow domain of WoW UI digits (0-9 only). Sub-1MB model, <5ms per inference, runs in real time on CPU.",
-    "ocr.p3.title": "③ One-click auto calibration",
-    "ocr.p3.desc": "One-click in-game calibration auto-detects and aligns OCR regions. The debugging process is compressed to 1 minute - zero professional knowledge required.",
+    "ocr.p3.title": "③ Zero Config",
+    "ocr.p3.desc": "Fully rebuilt engine - just open and use. No calibration, no learning required. Fully automatic screen state recognition, zero config zero barrier.",
     "ocr.th.model": "Component",
     "ocr.th.note": "Description",
     "ocr.r1.model": "Taint handling",
     "ocr.r1.note": "Full 12.0 adaptation, multi-tech bypass",
     "ocr.r2.model": "Narrow-domain recognition",
     "ocr.r2.note": "0-9 recognition, <1MB, <5ms",
-    "ocr.r3.model": "Auto calibration",
-    "ocr.r3.note": "One-click, done in 1 minute",
+    "ocr.r3.model": "Zero Config",
+    "ocr.r3.note": "Open and use, no calibration",
 
     // ---- Modules ----
     "mod.eyebrow": "CLASS MODULES",
@@ -403,7 +401,7 @@ window.I18N = {
     "start.1.t": "Launch Hub",
     "start.2.t": "Auto-install addon",
     "start.3.t": "Pick a class module",
-    "start.4.t": "One-click calibration",
+    "start.4.t": "Open & Use",
     "start.5.t": "Start the loop",
 
     // ---- FAQ ----
