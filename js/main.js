@@ -414,6 +414,7 @@
     'btn-discord': 'discord',
     'btn-douyin': 'douyin',
     'btn-bilibili': 'bilibili',
+    'btn-youtube': 'youtube',
     'btn-wechat': 'wechat'
   };
 
