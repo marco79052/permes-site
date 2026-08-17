@@ -16,7 +16,7 @@ window.I18N = {
     "nav.modules": "职业模块",
     "nav.simc": "SimC 评估",
     "nav.faq": "常见问题",
-    "nav.cta": "获取 Permes",
+    "nav.cta": "免费试用 Permes",
     "lang.switch": "English",
 
     // ---- Hero ----
@@ -25,7 +25,7 @@ window.I18N = {
     "hero.title2": "WoW 战斗辅助",
     "hero.sub": "计算机视觉 · 智能技能循环 · ~50ms 决策",
     "hero.desc": "Permes 不读取游戏内存、不注入进程，通过计算机视觉技术识别屏幕状态，规则引擎判定技能优先级发送按键。整条链路最低 50ms，CPU 占用不足 10%，DPS 对齐 SimC 理论值 ±2%。",
-    "hero.cta.primary": "获取 Permes",
+    "hero.cta.primary": "免费试用 Permes",
     "hero.cta.secondary": "查看工作原理",
     "hero.cta.discord": "加入 Discord",
     "hero.cta.douyin": "抖音主页",
@@ -208,6 +208,8 @@ window.I18N = {
     "faq.a6": "可以。Permes 的规则引擎支持顺滑插入技能，在 GCD 间隙自动插入瞬发技能，不打断主循环节奏，让输出循环自然流畅，最大化 DPS。",
     "faq.q7": "Permes Hub 有什么特色？",
     "faq.a7": "Hub 内置 AI 客服随时答疑，积分系统提供多重福利。一切操作在 Hub 中完成，无需下载解压，启动即用。",
+    "faq.q8": "如何免费试用？",
+    "faq.a8": "下载安装 Permes Hub 后，在激活界面输入激活码「免费试用」即可获得 2 小时全功能体验，包含全部职业专精、智能输出循环、战斗数据分析等所有功能，无任何限制。试用结束后可选择购买正式授权继续使用。",
 
     // ---- Footer ----
     "footer.tagline": "AI 驱动的 WoW 战斗辅助",
@@ -218,6 +220,7 @@ window.I18N = {
     "footer.disclaimer": "本项目仅供学习与研究使用，请遵守游戏服务条款与相关法律法规。",
     "footer.copy": "© 2026 Permes. 用中文开发，英文自动适配。",
 
+    "cta.trial": "🎁 下载安装后，在 Hub 中输入激活码「免费试用」即可获得 2 小时全功能体验",
     "download.limit": "今日下载次数已达上限（5次），请明天再试"
   },
 
@@ -231,7 +234,7 @@ window.I18N = {
     "nav.modules": "Classes",
     "nav.simc": "SimC Eval",
     "nav.faq": "FAQ",
-    "nav.cta": "Get Permes",
+    "nav.cta": "Free Trial",
     "lang.switch": "简体中文",
 
     // ---- Hero ----
@@ -240,7 +243,7 @@ window.I18N = {
     "hero.title2": "WoW Combat Assistant",
     "hero.sub": "Computer vision · Smart skill rotation · ~50ms decisions",
     "hero.desc": "Permes reads no game memory and injects nothing. It recognizes on-screen state via computer vision, decides the optimal skill through a rule engine, and sends keystrokes - the full loop as fast as 50ms, CPU usage under 10%, DPS aligned to SimC theoretical value ±2%.",
-    "hero.cta.primary": "Get Permes",
+    "hero.cta.primary": "Free Trial",
     "hero.cta.secondary": "See how it works",
     "hero.cta.discord": "Join Discord",
     "hero.cta.douyin": "Douyin",
@@ -423,6 +426,8 @@ window.I18N = {
     "faq.a6": "Yes. Permes's rule engine supports smooth ability weaving - automatically inserting instant-cast abilities during GCD gaps without disrupting the main rotation rhythm, keeping output cycles natural and maximizing DPS.",
     "faq.q7": "What makes Permes Hub special?",
     "faq.a7": "Hub has a built-in AI support assistant available anytime, and a points system with multiple rewards. Everything runs inside Hub - no download or unzip needed, launch and go.",
+    "faq.q8": "How to get a free trial?",
+    "faq.a8": "After downloading and installing Permes Hub, enter the activation code \"Free Trial\" on the activation screen to get 2 hours of full access, including all class specs, smart skill rotation, combat analytics, and more - no limitations. After the trial ends, you can purchase a license to continue.",
 
     // ---- Footer ----
     "footer.tagline": "AI-powered WoW combat assistant",
@@ -433,6 +438,7 @@ window.I18N = {
     "footer.disclaimer": "For learning and research only. Please comply with the game's Terms of Service and applicable laws.",
     "footer.copy": "© 2026 Permes. Developed in Chinese, auto-adapted to English.",
 
+    "cta.trial": "🎁 After downloading, enter activation code \"Free Trial\" in Hub to get 2 hours of full access",
     "download.limit": "Daily download limit reached (5). Please try again tomorrow."
   }
 };
