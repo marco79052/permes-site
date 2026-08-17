@@ -33,6 +33,7 @@ window.I18N = {
     "hero.cta.youtube": "YouTube 频道",
     "hero.cta.wechat": "微信客服",
     "wechat.copied": "微信号已复制，请在微信添加好友",
+    "hero.trial": "🎁 激活码「免费试用」· 2 小时全功能体验",
     "hero.note": "中英双语 · 不读内存 · 账号零风险",
 
     "demo.bar.master": "总开关",
@@ -251,6 +252,7 @@ window.I18N = {
     "hero.cta.youtube": "YouTube",
     "hero.cta.wechat": "WeChat Support",
     "wechat.copied": "WeChat ID copied, please add as friend in WeChat",
+    "hero.trial": "🎁 Activation code \"freetry\" · 2-hour full access trial",
     "hero.note": "Bilingual (ZH/EN) · No memory read · Zero account risk",
 
     "demo.bar.master": "Master",
@@ -427,7 +429,7 @@ window.I18N = {
     "faq.q7": "What makes Permes Hub special?",
     "faq.a7": "Hub has a built-in AI support assistant available anytime, and a points system with multiple rewards. Everything runs inside Hub - no download or unzip needed, launch and go.",
     "faq.q8": "How to get a free trial?",
-    "faq.a8": "After downloading and installing Permes Hub, enter the activation code \"Free Trial\" on the activation screen to get 2 hours of full access, including all class specs, smart skill rotation, combat analytics, and more - no limitations. After the trial ends, you can purchase a license to continue.",
+    "faq.a8": "After downloading and installing Permes Hub, enter the activation code \"freetry\" on the activation screen to get 2 hours of full access, including all class specs, smart skill rotation, combat analytics, and more - no limitations. After the trial ends, you can purchase a license to continue.",
 
     // ---- Footer ----
     "footer.tagline": "AI-powered WoW combat assistant",
@@ -438,7 +440,7 @@ window.I18N = {
     "footer.disclaimer": "For learning and research only. Please comply with the game's Terms of Service and applicable laws.",
     "footer.copy": "© 2026 Permes. Developed in Chinese, auto-adapted to English.",
 
-    "cta.trial": "🎁 After downloading, enter activation code \"Free Trial\" in Hub to get 2 hours of full access",
+    "cta.trial": "🎁 After downloading, enter activation code \"freetry\" in Hub to get 2 hours of full access",
     "download.limit": "Daily download limit reached (5). Please try again tomorrow."
   }
 };

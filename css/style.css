@@ -355,9 +355,16 @@ img { max-width: 100%; display: block; }
   margin-bottom: 16px;
   flex-wrap: wrap;
 }
+.hero-trial {
+  font-size: 14px;
+  color: var(--accent);
+  margin-top: 12px;
+  font-weight: 600;
+}
 .hero-note {
   font-size: 13px;
   color: var(--text-dim);
+  margin-top: 4px;
 }
 
 /* ============ Hero 演示动画 ============ */
