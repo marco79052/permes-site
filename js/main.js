@@ -352,23 +352,27 @@
   });
 
   // ============ 微信客服复制 ============
-  var WECHAT_ID = 'liliccc12';
+  var WECHAT_IDS = {
+    zh: 'liliccc12',
+    en: 'uaeleon'
+  };
   var wechatBtn = document.getElementById('wechatBtn');
   if (wechatBtn) {
     wechatBtn.addEventListener('click', function (e) {
       e.preventDefault();
       var lang = getLang();
+      var wechatId = WECHAT_IDS[lang] || WECHAT_IDS.zh;
       var dict = window.I18N[lang];
       var hint = dict['wechat.copied'] || '微信号已复制，请在微信添加好友';
       // 尝试复制到剪贴板
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(WECHAT_ID).then(function () {
-          showToast(hint + '：' + WECHAT_ID);
+        navigator.clipboard.writeText(wechatId).then(function () {
+          showToast(hint + '：' + wechatId);
         }).catch(function () {
-          fallbackCopy(WECHAT_ID, hint);
+          fallbackCopy(wechatId, hint);
         });
       } else {
-        fallbackCopy(WECHAT_ID, hint);
+        fallbackCopy(wechatId, hint);
       }
     });
   }
