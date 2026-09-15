@@ -16,7 +16,7 @@ window.I18N = {
     "nav.modules": "职业模块",
     "nav.simc": "SimC 评估",
     "nav.faq": "常见问题",
-    "nav.cta": "免费试用 Permes",
+    "nav.cta": "下载 Permes",
     "lang.switch": "English",
 
     // ---- Hero ----
@@ -25,7 +25,7 @@ window.I18N = {
     "hero.title2": "WoW 战斗辅助",
     "hero.sub": "计算机视觉 · 智能技能循环 · ~50ms 决策",
     "hero.desc": "Permes 不读取游戏内存、不注入进程，通过计算机视觉技术识别屏幕状态，规则引擎判定技能优先级发送按键。整条链路最低 50ms，CPU 占用不足 10%，DPS 对齐 SimC 理论值 ±2%。",
-    "hero.cta.primary": "免费试用 Permes",
+    "hero.cta.primary": "下载 Permes",
     "hero.cta.secondary": "查看工作原理",
     "hero.cta.discord": "加入 Discord",
     "hero.cta.douyin": "抖音主页",
@@ -33,7 +33,7 @@ window.I18N = {
     "hero.cta.youtube": "YouTube 频道",
     "hero.cta.wechat": "微信客服",
     "wechat.copied": "微信号已复制，请在微信添加好友",
-    "hero.trial": "🎁 激活码「免费试用」· 2 小时全功能体验",
+    "hero.trial": "🎁 免费试用改为客服人工发放 · 点击「微信客服」领取 2 小时体验码",
     "hero.note": "中英双语 · 不读内存 · 账号零风险",
 
     "demo.bar.master": "总开关",
@@ -210,7 +210,7 @@ window.I18N = {
     "faq.q7": "Permes Hub 有什么特色？",
     "faq.a7": "Hub 内置 AI 客服随时答疑，积分系统提供多重福利。一切操作在 Hub 中完成，无需下载解压，启动即用。",
     "faq.q8": "如何免费试用？",
-    "faq.a8": "下载安装 Permes Hub 后，在激活界面输入激活码「免费试用」即可获得 2 小时全功能体验，包含全部职业专精、智能输出循环、战斗数据分析等所有功能，无任何限制。试用结束后可选择购买正式授权继续使用。",
+    "faq.a8": "下载安装 Permes Hub 后，点击页面上方「微信客服」联系官方客服申请。客服会发放一个单模块一次性试用码，在 Hub 激活界面输入即可获得 2 小时对应专精的完整体验。试用结束后可选择购买正式授权继续使用。",
 
     // ---- Footer ----
     "footer.tagline": "AI 驱动的 WoW 战斗辅助",
@@ -221,7 +221,7 @@ window.I18N = {
     "footer.disclaimer": "本项目仅供学习与研究使用，请遵守游戏服务条款与相关法律法规。",
     "footer.copy": "© 2026 Permes. 用中文开发，英文自动适配。",
 
-    "cta.trial": "🎁 下载安装后，在 Hub 中输入激活码「免费试用」即可获得 2 小时全功能体验",
+    "cta.trial": "🎁 下载安装后点击「微信客服」领取试用码，在 Hub 中输入即可获得 2 小时体验",
     "download.limit": "今日下载次数已达上限（5次），请明天再试"
   },
 
@@ -235,7 +235,7 @@ window.I18N = {
     "nav.modules": "Classes",
     "nav.simc": "SimC Eval",
     "nav.faq": "FAQ",
-    "nav.cta": "Free Trial",
+    "nav.cta": "Download Permes",
     "lang.switch": "简体中文",
 
     // ---- Hero ----
@@ -244,7 +244,7 @@ window.I18N = {
     "hero.title2": "WoW Combat Assistant",
     "hero.sub": "Computer vision · Smart skill rotation · ~50ms decisions",
     "hero.desc": "Permes reads no game memory and injects nothing. It recognizes on-screen state via computer vision, decides the optimal skill through a rule engine, and sends keystrokes - the full loop as fast as 50ms, CPU usage under 10%, DPS aligned to SimC theoretical value ±2%.",
-    "hero.cta.primary": "Free Trial",
+    "hero.cta.primary": "Download Permes",
     "hero.cta.secondary": "See how it works",
     "hero.cta.discord": "Join Discord",
     "hero.cta.douyin": "Douyin",
@@ -252,7 +252,7 @@ window.I18N = {
     "hero.cta.youtube": "YouTube",
     "hero.cta.wechat": "WeChat Support",
     "wechat.copied": "WeChat ID copied, please add as friend in WeChat",
-    "hero.trial": "🎁 Activation code \"freetry\" · 2-hour full access trial",
+    "hero.trial": "🎁 Free trials are now issued by our staff · Click \"WeChat Support\" for a 2-hour trial code",
     "hero.note": "Bilingual (ZH/EN) · No memory read · Zero account risk",
 
     "demo.bar.master": "Master",
@@ -429,7 +429,7 @@ window.I18N = {
     "faq.q7": "What makes Permes Hub special?",
     "faq.a7": "Hub has a built-in AI support assistant available anytime, and a points system with multiple rewards. Everything runs inside Hub - no download or unzip needed, launch and go.",
     "faq.q8": "How to get a free trial?",
-    "faq.a8": "After downloading and installing Permes Hub, enter the activation code \"freetry\" on the activation screen to get 2 hours of full access, including all class specs, smart skill rotation, combat analytics, and more - no limitations. After the trial ends, you can purchase a license to continue.",
+    "faq.a8": "After downloading and installing Permes Hub, click \"WeChat Support\" above to request a trial from our staff. You will receive a one-time, single-module trial code. Enter it on the Hub activation screen to get 2 hours of full access for that specialization. After the trial ends, you can purchase a license to continue.",
 
     // ---- Footer ----
     "footer.tagline": "AI-powered WoW combat assistant",
@@ -440,7 +440,7 @@ window.I18N = {
     "footer.disclaimer": "For learning and research only. Please comply with the game's Terms of Service and applicable laws.",
     "footer.copy": "© 2026 Permes. Developed in Chinese, auto-adapted to English.",
 
-    "cta.trial": "🎁 After downloading, enter activation code \"freetry\" in Hub to get 2 hours of full access",
+    "cta.trial": "🎁 After downloading, click \"WeChat Support\" to get a trial code, then enter it in Hub for 2 hours of full access",
     "download.limit": "Daily download limit reached (5). Please try again tomorrow."
   }
 };
