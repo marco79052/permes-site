@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>激活码查询 - Permes 正版验证</title>
+  <meta name="description" content="输入你购买的 Permes 激活码，查询它是否为官方正版授权。">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .verify-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 96px 20px 80px;
+    }
+    .verify-title {
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .verify-sub {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 32px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .verify-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .verify-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+      font-size: 15px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      outline: none;
+    }
+    .verify-input:focus {
+      border-color: rgba(120, 190, 255, 0.8);
+    }
+    .verify-btn {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .verify-btn:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+    .verify-result {
+      margin-top: 20px;
+      border-radius: 10px;
+      padding: 18px;
+      display: none;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+    .verify-result.ok {
+      display: block;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.45);
+    }
+    .verify-result.bad {
+      display: block;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+    }
+    .verify-result .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .verify-result .row span:first-child {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .verify-note {
+      margin-top: 22px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.8;
+    }
+    .verify-back {
+      display: block;
+      text-align: center;
+      margin-top: 28px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .verify-back:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <section class="verify-wrap">
+    <h1 class="verify-title">激活码正版查询</h1>
+    <p class="verify-sub">
+      输入你购买的 Permes 激活码，立即查询它是否为官方签发的正版授权。<br>
+      Enter your Permes license key to verify it was issued by the official store.
+    </p>
+
+    <div class="verify-card">
+      <input id="licenseKey" class="verify-input" type="text"
+             placeholder="请输入激活码 / License key" autocomplete="off" spellcheck="false" maxlength="128">
+      <button id="verifyBtn" class="verify-btn" onclick="doVerify()">立即查询</button>
+      <div id="result" class="verify-result"></div>
+      <p class="verify-note">
+        查询结果由 Permes 官方服务器实时返回。若你购买的激活码查询不到（非官方渠道），说明它不是官方授权，
+        请联系你的购买渠道退款，并通过 <a href="/" style="color:#60a5fa;">官网</a> 获取正版。
+        每分钟最多可查询 10 次。
+      </p>
+    </div>
+
+    <a class="verify-back" href="/">← 返回官网首页</a>
+  </section>
+
+  <script>
+    var API = 'https://permes.xin/api/v1/license/self-check';
+
+    function fmt(key, value) {
+      return '<div class="row"><span>' + key + '</span><span>' + value + '</span></div>';
+    }
+
+    function doVerify() {
+      var key = document.getElementById('licenseKey').value.trim();
+      var btn = document.getElementById('verifyBtn');
+      var box = document.getElementById('result');
+      if (!key) {
+        box.className = 'verify-result bad';
+        box.innerHTML = '请先输入激活码。';
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = '查询中…';
+      box.className = 'verify-result';
+      box.innerHTML = '';
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ license_key: key })
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        var d = (j && j.data) || {};
+        if (d.valid) {
+          var tierName = { pro: '正式版', trial: '试用', monthly: '月卡' }[d.tier] || (d.tier || '-');
+          var html = '<strong>✅ 官方正版授权</strong>';
+          html += fmt('授权类型', tierName);
+          if (d.expires_at) html += fmt('到期时间', d.expires_at + ' (UTC)');
+          html += fmt('绑定机器', d.machines_used + ' / ' + d.max_machines);
+          box.className = 'verify-result ok';
+          box.innerHTML = html;
+        } else {
+          var reason = {
+            not_found: '查询不到该激活码——它不是 Permes 官方签发的授权。你购买的可能是非官方渠道的盗版卡密。',
+            expired: '该激活码已过期。',
+            revoked: '该激活码已被吊销。',
+            invalid_format: '激活码格式不正确，请检查后重新输入。'
+          }[d.reason] || '查询失败，请稍后再试。';
+          box.className = 'verify-result bad';
+          box.innerHTML = '<strong>❌ 未通过验证</strong><div style="margin-top:6px;">' + reason + '</div>';
+        }
+      }).catch(function () {
+        box.className = 'verify-result bad';
+        box.innerHTML = '网络异常，请稍后再试。';
+      }).finally(function () {
+        btn.disabled = false;
+        btn.textContent = '立即查询';
+      });
+    }
+
+    document.getElementById('licenseKey').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') doVerify();
+    });
+  </script>
+</body>
+</html>
